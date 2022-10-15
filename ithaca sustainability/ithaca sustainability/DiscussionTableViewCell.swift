@@ -9,15 +9,23 @@ import Foundation
 import UIKit
 
 class DiscussionTableViewCell: UITableViewCell {
-    /*
+    
+    var background = UILabel()
+    var authorLabel = UILabel()
     var titleLabel = UITextView()
-    var dateLabel = UILabel()
-    var publishLabel = UITextView()
-    var articleImage = UIImageView()*/
+    var numRepliesLabel = UILabel()
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        /*
+        
+        background.backgroundColor = .white
+        background.layer.masksToBounds = true
+        background.layer.cornerRadius = 20
+        background.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(background)
+        
+        titleLabel.backgroundColor = .clear
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         titleLabel.textColor = .black
         titleLabel.isEditable = false
@@ -29,35 +37,29 @@ class DiscussionTableViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)
         
-        publishLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        publishLabel.isEditable = false
-        publishLabel.isSelectable = false
-        publishLabel.isScrollEnabled = true
-        publishLabel.isUserInteractionEnabled = false
-        publishLabel.textContainer.maximumNumberOfLines = 1
-        publishLabel.textContainer.lineBreakMode = .byTruncatingTail
-        publishLabel.translatesAutoresizingMaskIntoConstraints = false
-        publishLabel.textColor = .systemGray
-        contentView.addSubview(publishLabel)
-        
-        dateLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.textColor = .systemGray
-        contentView.addSubview(dateLabel)
+        authorLabel.backgroundColor = .clear
+        authorLabel.font = .systemFont(ofSize: 12, weight: .bold)
+        authorLabel.translatesAutoresizingMaskIntoConstraints = false
+        authorLabel.textColor = .systemGray
+        contentView.addSubview(authorLabel)
 
-        articleImage.contentMode = .scaleAspectFit
-        articleImage.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(articleImage) */
+        numRepliesLabel.backgroundColor = .clear
+        numRepliesLabel.font = .systemFont(ofSize: 12, weight: .bold)
+        numRepliesLabel.translatesAutoresizingMaskIntoConstraints = false
+        numRepliesLabel.textColor = .systemGray
+        contentView.addSubview(numRepliesLabel)
         
         setupConstraints()
     }
 
     func configure(post: Post) {
-        /*
-        articleImage.image = article.articleImage
-        titleLabel.text = article.articleTitle
-        publishLabel.text = "From: " + article.publisher!
-        dateLabel.text = article.articleDate*/
+        titleLabel.text = post.postTitle
+        authorLabel.text = post.postAuthor
+        let num = post.comments.count
+        numRepliesLabel.text = String(num) + " Replies"
+        if (num == 1){
+            numRepliesLabel.text = String(num) + " Reply"
+        }
     }
 
     func setupConstraints() {

@@ -13,6 +13,7 @@ class Post {
     var postTitle: String?
     var postDescription: String?
     var postAuthor: String?
+    var comments: [Comment] = []
     
     init(){}
 }

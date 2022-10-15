@@ -28,10 +28,7 @@ class EditPostViewController: UIViewController {
     
     var headerBackground = UILabel()
     
-                
-    var loadedNewsScreen = NewsViewController()
     var loadedDiscussionScreen = ViewController()
-    var loadedResourcesScreen = ResourcesViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,11 +196,11 @@ class EditPostViewController: UIViewController {
     }
     
     @objc func newsButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedNewsScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen.loadedNewsScreen)
     }
     
     @objc func resourcesButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedResourcesScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen.loadedResourcesScreen)
     }
     
     @objc func discussionButtonPress(){
