@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_ithaca_sustainability_ithaca_sustainabilityUITests : NSObject
+@end
+@implementation PodsDummy_Pods_ithaca_sustainability_ithaca_sustainabilityUITests
+@end
