@@ -22,7 +22,9 @@ class NewsViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
     let reuseIdentifier = "newsCellReuse"
-    var articles: [Article] = []
+    var articles : [Article] = []
+    var ithacaArticles : [Article] = []
+    var globalArticles: [Article] = []
 
     let isoFormatter = ISO8601DateFormatter()
     let realDate: DateFormatter = {
@@ -89,7 +91,7 @@ class NewsViewController: UIViewController {
         tableView.addSubview(refreshControl)
         
         refreshControl.beginRefreshing()
-        self.getArticleData()
+        self.getGlobalArticleData()
         
         setupConstraints()
     }
@@ -163,15 +165,24 @@ class NewsViewController: UIViewController {
     }
     
     @objc func refresh(){
+<<<<<<< Updated upstream
         //getArticleData()
+=======
+        getGlobalArticleData()
+        getIthacaArticleData()
+>>>>>>> Stashed changes
         refreshControl.endRefreshing()
     }
     
-    func getArticleData() {
+    func getGlobalArticleData() {
         NetworkManager.getGlobalNewsArticles(completion: { (data,error) in
             var articles: [String:Any] = [:]
             articles = data as! [String : Any]
+<<<<<<< Updated upstream
             //self.getArticles(articleDictionary: articles)
+=======
+            self.getGlobalArticles(articleDictionary: articles)
+>>>>>>> Stashed changes
         }, finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -180,8 +191,8 @@ class NewsViewController: UIViewController {
         })
     }
     
-    func getArticles(articleDictionary: [String:Any]){
-        articles = []
+    func getGlobalArticles(articleDictionary: [String:Any]){
+        globalArticles = []
         let data = articleDictionary["articles"] as! [[String:Any]]
         var limit = 20
         if data.count < limit{
@@ -192,7 +203,7 @@ class NewsViewController: UIViewController {
         {
             for i in 0...limit-1{
                 var canContinue = true
-                for article in articles{
+                for article in globalArticles{
                     if article.articleTitle == data[i]["title"] as! String?{
                         canContinue = false
                         counter += 1
@@ -202,35 +213,102 @@ class NewsViewController: UIViewController {
                     }
                 }
                 if canContinue{
-                    articles.append(Article())
-                    articles[i - counter].articleTitle = data[i]["title"] as! String?
+                    globalArticles.append(Article())
+                    globalArticles[i - counter].articleTitle = data[i]["title"] as! String?
                     if let publishedAtString = data[i]["publishedAt"] as! String? {
                         if let date = isoFormatter.date(from: publishedAtString){
-                            articles[i - counter].articleDate = realDate.string(from: date)
+                            globalArticles[i - counter].articleDate = realDate.string(from: date)
                         }
                     }
                     let articleURL = data[i]["url"] as! String
-                    articles[i - counter].url = URL(string: articleURL)
+                    globalArticles[i - counter].url = URL(string: articleURL)
                     if let imageURL = data[i]["urlToImage"] {
                         if imageURL is NSNull {
 
                         } else {
                             let data = try? Data(contentsOf: URL(string: imageURL as! String)!)
                             if let imageData = data{
-                                articles[i - counter].articleImage = UIImage(data: imageData)
+                                globalArticles[i - counter].articleImage = UIImage(data: imageData)
                             }
                         }
                     }
                     if let source = data[i]["source"] as? [String: String] {
-                        articles[i - counter].publisher = source["name"]
+                        globalArticles[i - counter].publisher = source["name"]
                     }
                     else {
                         articles[i - counter].publisher = "Unavailible"
+                        globalArticles[i - counter].publisher = "Unavailible"
                     }
                 }
             }
         }
     }
+    
+    func getIthacaArticleData() {
+        NetworkManager.getIthacaNewsArticles(completion: { (data,error) in
+            var articles: [String:Any] = [:]
+            articles = data as! [String : Any]
+            self.getIthacaArticles(articleDictionary: articles)
+        }, finished: {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        })
+    }
+    
+    func getIthacaArticles(articleDictionary: [String:Any]){
+        ithacaArticles = []
+        let data = articleDictionary["articles"] as! [[String:Any]]
+        var limit = 20
+        if data.count < limit{
+            limit = data.count
+        }
+        var counter = 0
+        if limit > 0
+        {
+            for i in 0...limit-1{
+                var canContinue = true
+                for article in ithacaArticles{
+                    if article.articleTitle == data[i]["title"] as! String?{
+                        canContinue = false
+                        counter += 1
+                        if limit < data.count{
+                            limit += 1
+                        }
+                    }
+                }
+                if canContinue{
+                    ithacaArticles.append(Article())
+                    ithacaArticles[i - counter].articleTitle = data[i]["title"] as! String?
+                    if let publishedAtString = data[i]["publishedAt"] as! String? {
+                        if let date = isoFormatter.date(from: publishedAtString){
+                            ithacaArticles[i - counter].articleDate = realDate.string(from: date)
+                        }
+                    }
+                    let articleURL = data[i]["url"] as! String
+                    ithacaArticles[i - counter].url = URL(string: articleURL)
+                    if let imageURL = data[i]["urlToImage"] {
+                        if imageURL is NSNull {
+
+                        } else {
+                            let data = try? Data(contentsOf: URL(string: imageURL as! String)!)
+                            if let imageData = data{
+                                ithacaArticles[i - counter].articleImage = UIImage(data: imageData)
+                            }
+                        }
+                    }
+                    if let source = data[i]["source"] as? [String: String] {
+                        ithacaArticles[i - counter].publisher = source["name"]
+                    }
+                    else {
+                        ithacaArticles[i - counter].publisher = "Unavailible"
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 extension NewsViewController: UITableViewDataSource {
