@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import UIKit
+
+class Comment {
+    var commentBody: String?
+    var commentAuthor: String?
+    
+    init(){}
+}
