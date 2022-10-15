@@ -13,16 +13,35 @@ class NewsViewController: UIViewController {
     var resourcesButton = UIButton()
     var discussionButton = UIButton()
     var newsButton = UIButton()
+    var navBarBackground = UILabel()
+    
+    let refreshControl = UIRefreshControl()
+    var tableView = UITableView()
+    let reuseIdentifier = "newsCellReuse"
+    var articles: [Article] = []
+
+    let isoFormatter = ISO8601DateFormatter()
+    let realDate: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        return df
+    }()
     
     var loadedDiscussionScreen: ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
+        view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
+        isoFormatter.formatOptions = [.withInternetDateTime]
+
         title = "News"
 
+        navBarBackground.backgroundColor = .white
+        navBarBackground.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(navBarBackground)
+        
         resourcesButton.setBackgroundImage(UIImage(named: "resources1"), for: .normal)
         resourcesButton.backgroundColor = .white
         resourcesButton.addTarget(self, action: #selector(resourcesButtonPress), for: .touchUpInside)
@@ -40,11 +59,31 @@ class NewsViewController: UIViewController {
         newsButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(newsButton)
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        view.addSubview(tableView)
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
+        refreshControl.beginRefreshing()
+        //self.getArticleData()
+        
         setupConstraints()
     }
     
     func setupConstraints() {
 //         Setup the constraints for our views
+        
+        NSLayoutConstraint.activate([
+            navBarBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            navBarBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBarBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navBarBackground.topAnchor.constraint(equalTo: discussionButton.topAnchor, constant: -(view.frame.height * 0.018)),
+        ])
         
         NSLayoutConstraint.activate([
             resourcesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
@@ -79,6 +118,105 @@ class NewsViewController: UIViewController {
     @objc func resourcesButtonPress(){
         self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedResourcesScreen)
     }
+    
+    @objc func refresh(){
+        getArticleData()
+        refreshControl.endRefreshing()
+    }
+    
+    func getArticleData() {
+        NetworkManager.getGlobalNewsArticles(completion: { (data,error) in
+            var articles: [String:Any] = [:]
+            articles = data as! [String : Any]
+            self.getArticles(articleDictionary: articles)
+        }, finished: {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        })
+    }
+    
+    func getArticles(articleDictionary: [String:Any]){
+        articles = []
+        let data = articleDictionary["articles"] as! [[String:Any]]
+        var limit = 20
+        if data.count < limit{
+            limit = data.count
+        }
+        var counter = 0
+        if limit > 0
+        {
+            for i in 0...limit-1{
+                var canContinue = true
+                for article in articles{
+                    if article.articleTitle == data[i]["title"] as! String?{
+                        canContinue = false
+                        counter += 1
+                        if limit < data.count{
+                            limit += 1
+                        }
+                    }
+                }
+                if canContinue{
+                    articles.append(Article())
+                    articles[i - counter].articleTitle = data[i]["title"] as! String?
+                    if let publishedAtString = data[i]["publishedAt"] as! String? {
+                        if let date = isoFormatter.date(from: publishedAtString){
+                            articles[i - counter].articleDate = realDate.string(from: date)
+                        }
+                    }
+                    let articleURL = data[i]["url"] as! String
+                    articles[i - counter].url = URL(string: articleURL)
+                    if let imageURL = data[i]["urlToImage"] {
+                        if imageURL is NSNull {
 
+                        } else {
+                            let data = try? Data(contentsOf: URL(string: imageURL as! String)!)
+                            if let imageData = data{
+                                articles[i - counter].articleImage = UIImage(data: imageData)
+                            }
+                        }
+                    }
+                    if let source = data[i]["source"] as? [String: String] {
+                        articles[i - counter].publisher = source["name"]
+                    }
+                    else {
+                        articles[i - counter].publisher = "Unavailible"
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension NewsViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return articles.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? ArticleTableViewCell {
+                let article = articles[indexPath.row]
+                cell.configure(article: article)
+                cell.selectionStyle = .none
+                return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+}
+
+extension NewsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 105
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let thisURL = articles[indexPath.row].url{
+            UIApplication.shared.open(thisURL)
+        }
+    }
 }
 
