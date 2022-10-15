@@ -7,7 +7,7 @@ Define Post model.
 """
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.DO_NOTHING) #do nothing vs cascade?
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING) 
     title = models.CharField(max_length = 250)
     text = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)

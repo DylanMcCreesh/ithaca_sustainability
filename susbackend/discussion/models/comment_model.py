@@ -15,4 +15,4 @@ class Comment(models.Model):
 
     comment_id = models.IntegerField(primary_key = True)
     parent_id = models.ForeignKey('self', on_delete=models.DO_NOTHING)
-    post_id = models.ForeignKey(Post, on_delete = models.CASCADE)
+    post_id = models.ForeignKey(Post, related_name='comments', on_delete = models.CASCADE)
