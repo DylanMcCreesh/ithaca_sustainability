@@ -236,7 +236,6 @@ class NewsViewController: UIViewController {
                         globalArticles[i - counter].publisher = source["name"]
                     }
                     else {
-                        articles[i - counter].publisher = "Unavailible"
                         globalArticles[i - counter].publisher = "Unavailible"
                     }
                 }
