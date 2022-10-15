@@ -120,7 +120,7 @@ class NewsViewController: UIViewController {
     }
     
     @objc func refresh(){
-        getArticleData()
+        //getArticleData()
         refreshControl.endRefreshing()
     }
     
@@ -128,7 +128,7 @@ class NewsViewController: UIViewController {
         NetworkManager.getGlobalNewsArticles(completion: { (data,error) in
             var articles: [String:Any] = [:]
             articles = data as! [String : Any]
-            self.getArticles(articleDictionary: articles)
+            //self.getArticles(articleDictionary: articles)
         }, finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()

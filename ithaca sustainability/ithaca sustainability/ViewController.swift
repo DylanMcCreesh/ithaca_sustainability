@@ -14,6 +14,12 @@ class ViewController: UIViewController {
     var discussionButton = UIButton()
     var newsButton = UIButton()
     var navBarBackground = UILabel()
+    
+    var headerBackground = UILabel()
+    var createPostButton = UIButton()
+    var searchButton = UIButton()
+    
+    
                 
     var loadedNewsScreen = NewsViewController()
     var loadedResourcesScreen = ResourcesViewController()
@@ -28,6 +34,25 @@ class ViewController: UIViewController {
         loadedResourcesScreen.loadedDiscussionScreen = self
         
         self.navigationController?.setNeedsUpdateOfHomeIndicatorAutoHidden()
+        
+        headerBackground.backgroundColor = .white
+        headerBackground.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(headerBackground)
+        
+        createPostButton.setBackgroundImage(UIImage(named:"create_post_button"), for: .normal)
+        createPostButton.backgroundColor = .white
+        //createPostButton.frame.size = CGSize(width: 40.0, height: 20.0)
+        createPostButton.translatesAutoresizingMaskIntoConstraints = false
+        createPostButton.addTarget(self, action: #selector(createPostButtonPress), for: .touchUpInside)
+        view.addSubview(createPostButton)
+        
+        searchButton.setBackgroundImage(UIImage(named:"search_button"), for: .normal)
+        searchButton.backgroundColor = .white
+        //searchButton.frame.size = CGSize(width: 40.0, height: 20.0)
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.addTarget(self, action: #selector(searchButtonPress), for: .touchUpInside)
+        view.addSubview(searchButton)
+        
         
         navBarBackground.backgroundColor = .white
         navBarBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +81,29 @@ class ViewController: UIViewController {
     func setupConstraints() {
 //         Setup the constraints for our views
         NSLayoutConstraint.activate([
+            headerBackground.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.23)),
+            headerBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerBackground.topAnchor.constraint(equalTo: view.topAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            createPostButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.20)),
+            createPostButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:10),
+            createPostButton.widthAnchor.constraint(equalToConstant: 300),
+            createPostButton.heightAnchor.constraint(equalToConstant: 50)
+            //createPostButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            searchButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.20)),
+            //searchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-10),
+            searchButton.widthAnchor.constraint(equalToConstant: 50),
+            searchButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
             navBarBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             navBarBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navBarBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -83,6 +131,8 @@ class ViewController: UIViewController {
             newsButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05625),
         ])
         
+        
+        
     }
     
     override var prefersHomeIndicatorAutoHidden: Bool {
@@ -95,6 +145,14 @@ class ViewController: UIViewController {
     
     @objc func resourcesButtonPress(){
         self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedResourcesScreen)
+    }
+    
+    @objc func createPostButtonPress(){
+        //TODO
+    }
+    
+    @objc func searchButtonPress(){
+        //TODO
     }
 }
 
