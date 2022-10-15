@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         resourcesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resourcesButton)
         
-        discussionButton.setBackgroundImage(UIImage(named: "discussion2"), for: .normal)
+        discussionButton.setBackgroundImage(UIImage(named: "home2"), for: .normal)
         discussionButton.backgroundColor = .white
         discussionButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(discussionButton)

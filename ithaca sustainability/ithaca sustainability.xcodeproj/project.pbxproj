@@ -20,6 +20,7 @@
 		D8ADF1FFD2D384FBD5A15ECA /* Pods_ithaca_sustainability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C0EFB89C99AC363508C2D0 /* Pods_ithaca_sustainability.framework */; };
 		FCF2534C28FA56F300506C8A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2534B28FA56F300506C8A /* NewsViewController.swift */; };
 		FCF2534E28FA580A00506C8A /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2534D28FA580A00506C8A /* ResourcesViewController.swift */; };
+		FCF2535028FB047000506C8A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2534F28FB047000506C8A /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F759A01F7A5FB2D55D83DCDE /* Pods-ithaca sustainabilityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainabilityTests.debug.xcconfig"; path = "Target Support Files/Pods-ithaca sustainabilityTests/Pods-ithaca sustainabilityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCF2534B28FA56F300506C8A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		FCF2534D28FA580A00506C8A /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
+		FCF2534F28FB047000506C8A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,6 @@
 				F759A01F7A5FB2D55D83DCDE /* Pods-ithaca sustainabilityTests.debug.xcconfig */,
 				EEEB440A4ACF250918744AB9 /* Pods-ithaca sustainabilityTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -148,6 +149,7 @@
 				B8E976E528FA4EAE005FEAB6 /* Assets.xcassets */,
 				FCF2534B28FA56F300506C8A /* NewsViewController.swift */,
 				FCF2534D28FA580A00506C8A /* ResourcesViewController.swift */,
+				FCF2534F28FB047000506C8A /* NetworkManager.swift */,
 				B8E976E728FA4EAE005FEAB6 /* LaunchScreen.storyboard */,
 				B8E976EA28FA4EAE005FEAB6 /* Info.plist */,
 			);
@@ -409,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF2535028FB047000506C8A /* NetworkManager.swift in Sources */,
 				FCF2534E28FA580A00506C8A /* ResourcesViewController.swift in Sources */,
 				B8E976E128FA4EAC005FEAB6 /* ViewController.swift in Sources */,
 				B8E976DD28FA4EAC005FEAB6 /* AppDelegate.swift in Sources */,

@@ -29,7 +29,7 @@ class NewsViewController: UIViewController {
         resourcesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resourcesButton)
         
-        discussionButton.setBackgroundImage(UIImage(named: "discussion1"), for: .normal)
+        discussionButton.setBackgroundImage(UIImage(named: "home1"), for: .normal)
         discussionButton.backgroundColor = .white
         discussionButton.addTarget(self, action: #selector(discussionButtonPress), for: .touchUpInside)
         discussionButton.translatesAutoresizingMaskIntoConstraints = false
