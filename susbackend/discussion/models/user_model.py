@@ -1,6 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 """
-BECAUSE THIS IS A DJANGO APP
-TECHNICALLY.... WE DON'T NEED THIS, RIGHT??? 
+Define User model.
 """
+
+class User(AbstractUser):
+
+    def __str__(self):
+        return self.username
