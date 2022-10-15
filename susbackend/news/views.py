@@ -24,7 +24,3 @@ def get_ithaca_api(request):
     except Exception as e:
         raise e 
     return Response(response.json(), status=status.HTTP_200_OK)
-
-@api_view(['GET'])
-def test(request):
-    return Response({"OK":"OK"}, status=status.HTTP_200_OK)
