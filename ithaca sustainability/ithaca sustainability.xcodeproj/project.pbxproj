@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37B09E226C8D070505B6EE71 /* Pods_ithaca_sustainabilityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6D21B9C5115EA53C3D09B2 /* Pods_ithaca_sustainabilityTests.framework */; };
+		A6EA0CB00D6D3768287FAEF0 /* Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0DCA611CB25F0CCBECF0DF /* Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework */; };
 		B8E976DD28FA4EAC005FEAB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */; };
 		B8E976DF28FA4EAC005FEAB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */; };
 		B8E976E128FA4EAC005FEAB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976E028FA4EAC005FEAB6 /* ViewController.swift */; };
@@ -15,6 +17,7 @@
 		B8E976F428FA4EAE005FEAB6 /* ithaca_sustainabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976F328FA4EAE005FEAB6 /* ithaca_sustainabilityTests.swift */; };
 		B8E976FE28FA4EAE005FEAB6 /* ithaca_sustainabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976FD28FA4EAE005FEAB6 /* ithaca_sustainabilityUITests.swift */; };
 		B8E9770028FA4EAE005FEAB6 /* ithaca_sustainabilityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976FF28FA4EAE005FEAB6 /* ithaca_sustainabilityUITestsLaunchTests.swift */; };
+		D8ADF1FFD2D384FBD5A15ECA /* Pods_ithaca_sustainability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C0EFB89C99AC363508C2D0 /* Pods_ithaca_sustainability.framework */; };
 		FCF2534C28FA56F300506C8A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2534B28FA56F300506C8A /* NewsViewController.swift */; };
 		FCF2534E28FA580A00506C8A /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2534D28FA580A00506C8A /* ResourcesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C0DCA611CB25F0CCBECF0DF /* Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6D21B9C5115EA53C3D09B2 /* Pods_ithaca_sustainabilityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ithaca_sustainabilityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		456AFF73EBC230B6E502105E /* Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig"; path = "Target Support Files/Pods-ithaca sustainability-ithaca sustainabilityUITests/Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4EA6F558F23027EFB4128347 /* Pods-ithaca sustainability.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainability.debug.xcconfig"; path = "Target Support Files/Pods-ithaca sustainability/Pods-ithaca sustainability.debug.xcconfig"; sourceTree = "<group>"; };
+		74C0EFB89C99AC363508C2D0 /* Pods_ithaca_sustainability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ithaca_sustainability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E976D928FA4EAC005FEAB6 /* ithaca sustainability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ithaca sustainability.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,10 @@
 		B8E976F928FA4EAE005FEAB6 /* ithaca sustainabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ithaca sustainabilityUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E976FD28FA4EAE005FEAB6 /* ithaca_sustainabilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ithaca_sustainabilityUITests.swift; sourceTree = "<group>"; };
 		B8E976FF28FA4EAE005FEAB6 /* ithaca_sustainabilityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ithaca_sustainabilityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CD16A8DBFF54EF25F5047EFE /* Pods-ithaca sustainability.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainability.release.xcconfig"; path = "Target Support Files/Pods-ithaca sustainability/Pods-ithaca sustainability.release.xcconfig"; sourceTree = "<group>"; };
+		DC7B3EDB4A82643BC57061E4 /* Pods-ithaca sustainability-ithaca sustainabilityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainability-ithaca sustainabilityUITests.debug.xcconfig"; path = "Target Support Files/Pods-ithaca sustainability-ithaca sustainabilityUITests/Pods-ithaca sustainability-ithaca sustainabilityUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EEEB440A4ACF250918744AB9 /* Pods-ithaca sustainabilityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainabilityTests.release.xcconfig"; path = "Target Support Files/Pods-ithaca sustainabilityTests/Pods-ithaca sustainabilityTests.release.xcconfig"; sourceTree = "<group>"; };
+		F759A01F7A5FB2D55D83DCDE /* Pods-ithaca sustainabilityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainabilityTests.debug.xcconfig"; path = "Target Support Files/Pods-ithaca sustainabilityTests/Pods-ithaca sustainabilityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCF2534B28FA56F300506C8A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		FCF2534D28FA580A00506C8A /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8ADF1FFD2D384FBD5A15ECA /* Pods_ithaca_sustainability.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B09E226C8D070505B6EE71 /* Pods_ithaca_sustainabilityTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +86,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6EA0CB00D6D3768287FAEF0 /* Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		457654A2B2C7DD2CF73B4CF1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4EA6F558F23027EFB4128347 /* Pods-ithaca sustainability.debug.xcconfig */,
+				CD16A8DBFF54EF25F5047EFE /* Pods-ithaca sustainability.release.xcconfig */,
+				DC7B3EDB4A82643BC57061E4 /* Pods-ithaca sustainability-ithaca sustainabilityUITests.debug.xcconfig */,
+				456AFF73EBC230B6E502105E /* Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig */,
+				F759A01F7A5FB2D55D83DCDE /* Pods-ithaca sustainabilityTests.debug.xcconfig */,
+				EEEB440A4ACF250918744AB9 /* Pods-ithaca sustainabilityTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		50A6246563432309AF07D8AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74C0EFB89C99AC363508C2D0 /* Pods_ithaca_sustainability.framework */,
+				0C0DCA611CB25F0CCBECF0DF /* Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework */,
+				3B6D21B9C5115EA53C3D09B2 /* Pods_ithaca_sustainabilityTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B8E976D028FA4EAC005FEAB6 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +124,8 @@
 				B8E976F228FA4EAE005FEAB6 /* ithaca sustainabilityTests */,
 				B8E976FC28FA4EAE005FEAB6 /* ithaca sustainabilityUITests */,
 				B8E976DA28FA4EAC005FEAB6 /* Products */,
+				457654A2B2C7DD2CF73B4CF1 /* Pods */,
+				50A6246563432309AF07D8AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8E9770328FA4EAE005FEAB6 /* Build configuration list for PBXNativeTarget "ithaca sustainability" */;
 			buildPhases = (
+				04D08C760CAC9F5A3C23BC79 /* [CP] Check Pods Manifest.lock */,
 				B8E976D528FA4EAC005FEAB6 /* Sources */,
 				B8E976D628FA4EAC005FEAB6 /* Frameworks */,
 				B8E976D728FA4EAC005FEAB6 /* Resources */,
+				EE931859989181CD21F883EA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +197,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8E9770628FA4EAE005FEAB6 /* Build configuration list for PBXNativeTarget "ithaca sustainabilityTests" */;
 			buildPhases = (
+				1E3F370A6E1C2B893F7861CE /* [CP] Check Pods Manifest.lock */,
 				B8E976EB28FA4EAE005FEAB6 /* Sources */,
 				B8E976EC28FA4EAE005FEAB6 /* Frameworks */,
 				B8E976ED28FA4EAE005FEAB6 /* Resources */,
@@ -172,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8E9770928FA4EAE005FEAB6 /* Build configuration list for PBXNativeTarget "ithaca sustainabilityUITests" */;
 			buildPhases = (
+				82CC7F32A2E630E271B074D8 /* [CP] Check Pods Manifest.lock */,
 				B8E976F528FA4EAE005FEAB6 /* Sources */,
 				B8E976F628FA4EAE005FEAB6 /* Frameworks */,
 				B8E976F728FA4EAE005FEAB6 /* Resources */,
+				658BAD598B23F3A516AED705 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,6 +300,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04D08C760CAC9F5A3C23BC79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ithaca sustainability-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E3F370A6E1C2B893F7861CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ithaca sustainabilityTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		658BAD598B23F3A516AED705 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ithaca sustainability-ithaca sustainabilityUITests/Pods-ithaca sustainability-ithaca sustainabilityUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ithaca sustainability-ithaca sustainabilityUITests/Pods-ithaca sustainability-ithaca sustainabilityUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ithaca sustainability-ithaca sustainabilityUITests/Pods-ithaca sustainability-ithaca sustainabilityUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82CC7F32A2E630E271B074D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ithaca sustainability-ithaca sustainabilityUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE931859989181CD21F883EA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ithaca sustainability/Pods-ithaca sustainability-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ithaca sustainability/Pods-ithaca sustainability-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ithaca sustainability/Pods-ithaca sustainability-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B8E976D528FA4EAC005FEAB6 /* Sources */ = {
@@ -430,6 +579,7 @@
 		};
 		B8E9770428FA4EAE005FEAB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EA6F558F23027EFB4128347 /* Pods-ithaca sustainability.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -457,6 +607,7 @@
 		};
 		B8E9770528FA4EAE005FEAB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD16A8DBFF54EF25F5047EFE /* Pods-ithaca sustainability.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -484,6 +635,7 @@
 		};
 		B8E9770728FA4EAE005FEAB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F759A01F7A5FB2D55D83DCDE /* Pods-ithaca sustainabilityTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -503,6 +655,7 @@
 		};
 		B8E9770828FA4EAE005FEAB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEEB440A4ACF250918744AB9 /* Pods-ithaca sustainabilityTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -522,6 +675,7 @@
 		};
 		B8E9770A28FA4EAE005FEAB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC7B3EDB4A82643BC57061E4 /* Pods-ithaca sustainability-ithaca sustainabilityUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -539,6 +693,7 @@
 		};
 		B8E9770B28FA4EAE005FEAB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 456AFF73EBC230B6E502105E /* Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

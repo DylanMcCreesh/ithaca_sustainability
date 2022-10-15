@@ -23,19 +23,19 @@ class NewsViewController: UIViewController {
         
         title = "News"
 
-        resourcesButton.setBackgroundImage(UIImage(named: "news1"), for: .normal)
+        resourcesButton.setBackgroundImage(UIImage(named: "resources1"), for: .normal)
         resourcesButton.backgroundColor = .white
         resourcesButton.addTarget(self, action: #selector(resourcesButtonPress), for: .touchUpInside)
         resourcesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resourcesButton)
         
-        discussionButton.setBackgroundImage(UIImage(named: "news1"), for: .normal)
+        discussionButton.setBackgroundImage(UIImage(named: "discussion1"), for: .normal)
         discussionButton.backgroundColor = .white
         discussionButton.addTarget(self, action: #selector(discussionButtonPress), for: .touchUpInside)
         discussionButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(discussionButton)
         
-        newsButton.setBackgroundImage(UIImage(named:"news1"), for: .normal)
+        newsButton.setBackgroundImage(UIImage(named:"news2"), for: .normal)
         newsButton.backgroundColor = .white
         newsButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(newsButton)
