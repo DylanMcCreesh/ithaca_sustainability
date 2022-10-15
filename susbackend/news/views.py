@@ -6,21 +6,15 @@ import requests
 
 from django.http import JsonResponse
 
-from news.constants import GLOBAL_NEWS_URL, ITHACA_NEWS_URL
+from news.constants import NEWS_API_URL
 
 
 @api_view(['GET'])
-def get_global_api(request):
+def get_api(request):
     try:
-        response = requests.get(GLOBAL_NEWS_URL)
+        response = requests.get(NEWS_API_URL)
     except Exception as e:
         raise e 
-    return Response(response.json(), status=status.HTTP_200_OK)
 
-@api_view(['GET'])
-def get_ithaca_api(request):
-    try:
-        response = requests.get(ITHACA_NEWS_URL)
-    except Exception as e:
-        raise e 
     return Response(response.json(), status=status.HTTP_200_OK)
+    #return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
