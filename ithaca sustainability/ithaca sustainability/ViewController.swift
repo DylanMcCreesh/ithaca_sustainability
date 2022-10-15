@@ -13,13 +13,14 @@ class ViewController: UIViewController {
     var resourcesButton = UIButton()
     var discussionButton = UIButton()
     var newsButton = UIButton()
+    var navBarBackground = UILabel()
                 
     var loadedNewsScreen = NewsViewController()
     var loadedResourcesScreen = ResourcesViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
         title = "Discussion"
         
@@ -28,13 +29,17 @@ class ViewController: UIViewController {
         
         self.navigationController?.setNeedsUpdateOfHomeIndicatorAutoHidden()
         
+        navBarBackground.backgroundColor = .white
+        navBarBackground.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(navBarBackground)
+        
         resourcesButton.setBackgroundImage(UIImage(named: "resources1"), for: .normal)
         resourcesButton.backgroundColor = .white
         resourcesButton.addTarget(self, action: #selector(resourcesButtonPress), for: .touchUpInside)
         resourcesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resourcesButton)
         
-        discussionButton.setBackgroundImage(UIImage(named: "discussion2"), for: .normal)
+        discussionButton.setBackgroundImage(UIImage(named: "home2"), for: .normal)
         discussionButton.backgroundColor = .white
         discussionButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(discussionButton)
@@ -50,6 +55,12 @@ class ViewController: UIViewController {
 
     func setupConstraints() {
 //         Setup the constraints for our views
+        NSLayoutConstraint.activate([
+            navBarBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            navBarBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBarBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navBarBackground.topAnchor.constraint(equalTo: discussionButton.topAnchor, constant: -(view.frame.height * 0.018)),
+        ])
         
         NSLayoutConstraint.activate([
             resourcesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
@@ -71,6 +82,7 @@ class ViewController: UIViewController {
             newsButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05625),
             newsButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05625),
         ])
+        
     }
     
     override var prefersHomeIndicatorAutoHidden: Bool {
