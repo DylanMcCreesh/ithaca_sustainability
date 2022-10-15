@@ -19,12 +19,19 @@ class NewsViewController: UIViewController {
     var descriptionLabel = UILabel()
     var titleBackground = UILabel()
     
+    var ithacaFilter = UIButton()
+    var globalFilter = UIButton()
+    
+    var filterIthaca: Bool = false
+    var filterGlobal: Bool = false
+    
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
     let reuseIdentifier = "newsCellReuse"
     var articles : [Article] = []
     var ithacaArticles : [Article] = []
     var globalArticles: [Article] = []
+    var allArticles: [Article] = []
 
     let isoFormatter = ISO8601DateFormatter()
     let realDate: DateFormatter = {
@@ -57,6 +64,20 @@ class NewsViewController: UIViewController {
         descriptionLabel.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
+        
+        ithacaFilter.setBackgroundImage(UIImage(named: "ithaca_tag_2"), for: .normal)
+        ithacaFilter.backgroundColor = .white
+        ithacaFilter.addTarget(self, action: #selector(ithacaFilterPress), for: .touchUpInside)
+        ithacaFilter.contentMode = .scaleAspectFit
+        ithacaFilter.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(ithacaFilter)
+        
+        globalFilter.setBackgroundImage(UIImage(named: "global_tag_2"), for: .normal)
+        globalFilter.backgroundColor = .white
+        globalFilter.addTarget(self, action: #selector(globalFilterPress), for: .touchUpInside)
+        globalFilter.contentMode = .scaleAspectFit
+        globalFilter.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(globalFilter)
 
         navBarBackground.backgroundColor = .white
         navBarBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +125,7 @@ class NewsViewController: UIViewController {
             titleBackground.topAnchor.constraint(equalTo: view.topAnchor),
             titleBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             titleBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            titleBackground.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: (view.frame.height * 0.018)),
+            titleBackground.bottomAnchor.constraint(equalTo: ithacaFilter.bottomAnchor, constant: (view.frame.height * 0.005)),
         ])
         
         NSLayoutConstraint.activate([
@@ -115,6 +136,20 @@ class NewsViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            ithacaFilter.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: view.frame.height * 0.001),
+            ithacaFilter.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -6),
+            ithacaFilter.heightAnchor.constraint(equalToConstant: 25),
+            ithacaFilter.widthAnchor.constraint(equalToConstant: 54.375)
+        ])
+        
+        NSLayoutConstraint.activate([
+            globalFilter.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: view.frame.height * 0.001),
+            globalFilter.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 6),
+            globalFilter.heightAnchor.constraint(equalToConstant: 25),
+            globalFilter.widthAnchor.constraint(equalToConstant: 54.375)
         ])
         
         NSLayoutConstraint.activate([
@@ -157,6 +192,48 @@ class NewsViewController: UIViewController {
         return true
     }
     
+    @objc func ithacaFilterPress(){
+        filterIthaca = !filterIthaca
+        if (filterIthaca){
+            ithacaFilter.setBackgroundImage(UIImage(named: "ithaca_tag_1"), for: .normal)
+            articles = ithacaArticles
+            if (filterGlobal){
+                articles = allArticles
+            }
+        }
+        else{
+            ithacaFilter.setBackgroundImage(UIImage(named: "ithaca_tag_2"), for: .normal)
+            articles = allArticles
+            if (filterGlobal){
+                articles = globalArticles
+            }
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    @objc func globalFilterPress(){
+        filterGlobal = !filterGlobal
+        if (filterGlobal){
+            globalFilter.setBackgroundImage(UIImage(named: "global_tag_1"), for: .normal)
+            articles = globalArticles
+            if (filterIthaca){
+                articles = allArticles
+            }
+        }
+        else{
+            globalFilter.setBackgroundImage(UIImage(named: "global_tag_2"), for: .normal)
+            articles = allArticles
+            if (filterIthaca){
+                articles = ithacaArticles
+            }
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     @objc func discussionButtonPress(){
         self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!)
     }
@@ -179,7 +256,8 @@ class NewsViewController: UIViewController {
             self.getGlobalArticles(articleDictionary: articles)
         }, finished: {
             DispatchQueue.main.async {
-                self.articles = self.ithacaArticles + self.globalArticles
+                self.allArticles = self.ithacaArticles + self.globalArticles
+                self.articles = self.allArticles
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -240,7 +318,8 @@ class NewsViewController: UIViewController {
             self.getIthacaArticles(articleDictionary: articles)
         }, finished: {
             DispatchQueue.main.async {
-                self.articles = self.ithacaArticles + self.globalArticles
+                self.allArticles = self.ithacaArticles + self.globalArticles
+                self.articles = self.allArticles
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
