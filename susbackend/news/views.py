@@ -16,5 +16,5 @@ def get_api(request):
     except Exception as e:
         raise e 
 
-    return Response(response, status=status.HTTP_200_OK)
+    return Response(response.json(), status=status.HTTP_200_OK)
     #return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
