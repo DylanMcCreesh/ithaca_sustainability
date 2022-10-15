@@ -248,6 +248,23 @@ class NewsViewController: UIViewController {
         refreshControl.endRefreshing()
     }
     
+    func sortArticleByTime (array: [Article]){
+        var holder: [Article] = []
+        var i = 0
+        for a in array{
+            holder[i] = a
+            i += 1
+        }
+    }
+    
+    func getUnixFromDate(dateStr: String) -> Double{
+        let date = realDate.date(from: dateStr)
+        if let time = date?.timeIntervalSince1970{
+            return time
+        }
+        return 0;
+    }
+    
     func getGlobalArticleData() {
         NetworkManager.getGlobalNewsArticles(completion: { (data,error) in
             var articles: [String:Any] = [:]
