@@ -7,6 +7,7 @@ class SubResourceViewController: UIViewController {
 
     var titleLabel = UILabel()
     var descriptionLabel = UILabel()
+    var descriptionText = UITextView()
     var titleBackground = UILabel()
     
     var addButton = UIButton()
@@ -17,8 +18,6 @@ class SubResourceViewController: UIViewController {
     var navBarBackground = UILabel()
     
     var loadedDiscussionScreen: ViewController?
-    var loadedNewsScreen = NewsViewController()
-    var loadedResourcesScreen = ResourcesViewController()
     
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
@@ -44,6 +43,13 @@ class SubResourceViewController: UIViewController {
         descriptionLabel.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
+        
+        descriptionText.text = "A sustainable brand not on this list? Help grow our resources here: "
+        descriptionText.isEditable = false
+        descriptionText.font = .systemFont(ofSize: 16, weight: .regular)
+        descriptionText.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
+        descriptionText.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(descriptionText)
         
         
         addButton.setBackgroundImage(UIImage(named: "add"), for: .normal)
@@ -106,6 +112,20 @@ class SubResourceViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            descriptionText.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
+            descriptionText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            descriptionText.widthAnchor.constraint(equalToConstant: 400),
+        ])
+        
+        NSLayoutConstraint.activate([
+            addButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            addButton.widthAnchor.constraint(equalToConstant: 40),
+            addButton.heightAnchor.constraint(equalToConstant: 40),
+        
         ])
         
         NSLayoutConstraint.activate([

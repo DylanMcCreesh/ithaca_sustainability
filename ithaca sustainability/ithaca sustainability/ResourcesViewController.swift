@@ -21,8 +21,7 @@ class ResourcesViewController: UIViewController {
     var navBarBackground = UILabel()
     
     var loadedDiscussionScreen: ViewController?
-    var loadedNewsScreen = NewsViewController()
-    var loadedResourcesScreen = ResourcesViewController()
+    
     
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
