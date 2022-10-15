@@ -91,7 +91,8 @@ class NewsViewController: UIViewController {
         tableView.addSubview(refreshControl)
         
         refreshControl.beginRefreshing()
-        self.getGlobalArticleData()
+        getIthacaArticleData()
+        getGlobalArticleData()
         
         setupConstraints()
     }
@@ -165,9 +166,8 @@ class NewsViewController: UIViewController {
     }
     
     @objc func refresh(){
-
-        getGlobalArticleData()
         getIthacaArticleData()
+        getGlobalArticleData()
         refreshControl.endRefreshing()
     }
     
@@ -179,6 +179,7 @@ class NewsViewController: UIViewController {
             self.getGlobalArticles(articleDictionary: articles)
         }, finished: {
             DispatchQueue.main.async {
+                self.articles = self.ithacaArticles + self.globalArticles
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -188,7 +189,7 @@ class NewsViewController: UIViewController {
     func getGlobalArticles(articleDictionary: [String:Any]){
         globalArticles = []
         let data = articleDictionary["articles"] as! [[String:Any]]
-        var limit = 20
+        var limit = 15 - ithacaArticles.count
         if data.count < limit{
             limit = data.count
         }
@@ -226,12 +227,7 @@ class NewsViewController: UIViewController {
                             }
                         }
                     }
-                    if let source = data[i]["source"] as? [String: String] {
-                        globalArticles[i - counter].publisher = source["name"]
-                    }
-                    else {
-                        globalArticles[i - counter].publisher = "Unavailible"
-                    }
+                    globalArticles[i - counter].isIthaca = false
                 }
             }
         }
@@ -244,6 +240,7 @@ class NewsViewController: UIViewController {
             self.getIthacaArticles(articleDictionary: articles)
         }, finished: {
             DispatchQueue.main.async {
+                self.articles = self.ithacaArticles + self.globalArticles
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -253,7 +250,7 @@ class NewsViewController: UIViewController {
     func getIthacaArticles(articleDictionary: [String:Any]){
         ithacaArticles = []
         let data = articleDictionary["articles"] as! [[String:Any]]
-        var limit = 20
+        var limit = 15
         if data.count < limit{
             limit = data.count
         }
@@ -291,12 +288,7 @@ class NewsViewController: UIViewController {
                             }
                         }
                     }
-                    if let source = data[i]["source"] as? [String: String] {
-                        ithacaArticles[i - counter].publisher = source["name"]
-                    }
-                    else {
-                        ithacaArticles[i - counter].publisher = "Unavailible"
-                    }
+                    ithacaArticles[ i - counter].isIthaca = true
                 }
             }
         }
@@ -315,6 +307,8 @@ extension NewsViewController: UITableViewDataSource {
                 let article = articles[indexPath.row]
                 cell.configure(article: article)
                 cell.selectionStyle = .none
+                cell.layer.backgroundColor = UIColor.clear.cgColor
+                cell.backgroundColor = .clear
                 return cell
         } else {
             return UITableViewCell()

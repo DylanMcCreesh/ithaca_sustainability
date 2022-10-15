@@ -13,7 +13,7 @@ class Article {
     var articleImage: UIImage? = UIImage(named: "news1")
     var articleDate: String?
     var url: URL?
-    var publisher: String? = ""
+    var isIthaca: Bool? = true
     
     init(){}
 }
