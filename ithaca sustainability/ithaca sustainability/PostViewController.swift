@@ -31,9 +31,8 @@ class PostViewController: UIViewController {
     let reuseIdentifier = "commentCellReuse"
     var comments : [Comment] = []
                 
-    var loadedNewsScreen = NewsViewController()
-    var loadedDiscussionScreen = ViewController()
-    var loadedResourcesScreen = ResourcesViewController()
+    var loadedDiscussionScreen: ViewController?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
