@@ -15,6 +15,10 @@ class NewsViewController: UIViewController {
     var newsButton = UIButton()
     var navBarBackground = UILabel()
     
+    var titleLabel = UILabel()
+    var descriptionLabel = UILabel()
+    var titleBackground = UILabel()
+    
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
     let reuseIdentifier = "newsCellReuse"
@@ -36,7 +40,21 @@ class NewsViewController: UIViewController {
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         isoFormatter.formatOptions = [.withInternetDateTime]
 
-        title = "News"
+        
+        titleBackground.backgroundColor = .white
+        titleBackground.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(titleBackground)
+        
+        titleLabel.text = "News"
+        titleLabel.font = .systemFont(ofSize: 28, weight: .bold)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(titleLabel)
+        
+        descriptionLabel.text = "Recent Developments"
+        descriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        descriptionLabel.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(descriptionLabel)
 
         navBarBackground.backgroundColor = .white
         navBarBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +81,7 @@ class NewsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
         tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         refreshControl.attributedTitle = NSAttributedString(string: "")
@@ -70,13 +89,37 @@ class NewsViewController: UIViewController {
         tableView.addSubview(refreshControl)
         
         refreshControl.beginRefreshing()
-        //self.getArticleData()
+        self.getArticleData()
         
         setupConstraints()
     }
     
     func setupConstraints() {
 //         Setup the constraints for our views
+        
+        NSLayoutConstraint.activate([
+            titleBackground.topAnchor.constraint(equalTo: view.topAnchor),
+            titleBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            titleBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            titleBackground.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: (view.frame.height * 0.018)),
+        ])
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -(view.frame.height * 0.02)),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
+            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
+            tableView.topAnchor.constraint(equalTo: titleBackground.bottomAnchor, constant: 5),
+            tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
+        ])
         
         NSLayoutConstraint.activate([
             navBarBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
