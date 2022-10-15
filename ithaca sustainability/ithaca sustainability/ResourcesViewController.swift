@@ -23,12 +23,12 @@ class ResourcesViewController: UIViewController {
         
         title = "Resources"
         
-        resourcesButton.setBackgroundImage(UIImage(named: "news1"), for: .normal)
+        resourcesButton.setBackgroundImage(UIImage(named: "resources2"), for: .normal)
         resourcesButton.backgroundColor = .white
         resourcesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resourcesButton)
         
-        discussionButton.setBackgroundImage(UIImage(named: "news1"), for: .normal)
+        discussionButton.setBackgroundImage(UIImage(named: "discussion1"), for: .normal)
         discussionButton.backgroundColor = .white
         discussionButton.addTarget(self, action: #selector(discussionButtonPress), for: .touchUpInside)
         discussionButton.translatesAutoresizingMaskIntoConstraints = false
