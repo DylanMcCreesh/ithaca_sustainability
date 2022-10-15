@@ -32,14 +32,29 @@ def get_all_posts(request):
 """
 Get post by id.
 """
+@api_view(['GET'])
+def get_post_by_id(request, album_id):
+    try:
+        queryset = Post.objects.get(id=album_id)
+    except Post.DoesNotExist:
+        return JsonResponse({"error":"does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = PostSerializer(queryset)
+    return JsonResponse(serializer.data, status=status.HTTP_200_OK)
 
 """
 Create comment on a post.
 Given post id
 """
+def create_comment_on_post(request, post_id):
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+    return JsonResponse(serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
 """
-Create comment on another comment.
+STRETCH GOAL: Create comment on another comment.
 Given parent comment id.
 """
 

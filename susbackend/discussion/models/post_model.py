@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+from susbackend.discussion.serializers import CommentSerializer
+
 """
 Define Post model.
 """
@@ -11,3 +13,4 @@ class Post(models.Model):
     title = models.CharField(max_length = 250)
     text = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
+
