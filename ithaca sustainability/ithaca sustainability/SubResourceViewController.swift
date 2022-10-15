@@ -1,19 +1,15 @@
-//
-//  NewsViewController.swift
-//  ithaca sustainability
-//
-//  Created by Dylan McCreesh on 10/14/22.
-//
+
 
 import Foundation
 import UIKit
 
-class ResourcesViewController: UIViewController {
+class SubResourceViewController: UIViewController {
 
     var titleLabel = UILabel()
     var descriptionLabel = UILabel()
     var titleBackground = UILabel()
     
+    var addButton = UIButton()
     
     var resourcesButton = UIButton()
     var discussionButton = UIButton()
@@ -26,8 +22,8 @@ class ResourcesViewController: UIViewController {
     
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
-    let reuseIdentifier = "resourceCellReuse"
-    var resources : [Resource] = []
+    let reuseIdentifier = "subResourceCellReuse"
+    var subResources : [SubResource] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,16 +34,22 @@ class ResourcesViewController: UIViewController {
         titleBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleBackground)
         
-        titleLabel.text = "Resources"
+        titleLabel.text = "Sustainable Clothing"
         titleLabel.font = .systemFont(ofSize: 28, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
         
-        descriptionLabel.text = "Collaborative Sustainability"
+        descriptionLabel.text = "A sustainable brand not on this list? Help grow our resources here: "
         descriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
         descriptionLabel.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
+        
+        
+        addButton.setBackgroundImage(UIImage(named: "add"), for: .normal)
+        addButton.backgroundColor = .clear
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(addButton)
         
         navBarBackground.backgroundColor = .white
         navBarBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +90,7 @@ class ResourcesViewController: UIViewController {
 
     func setupConstraints() {
 //         Setup the constraints for our views
+        
         NSLayoutConstraint.activate([
             titleBackground.topAnchor.constraint(equalTo: view.topAnchor),
             titleBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -152,16 +155,16 @@ class ResourcesViewController: UIViewController {
 
 }
 
-extension ResourcesViewController: UITableViewDataSource {
+extension SubResourceViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resources.count
+        return subResources.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? ResourceTableViewCell {
-                let resource = resources[indexPath.row]
-                cell.configure(resource: resource)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SubResourceTableViewCell {
+                let subResource = subResources[indexPath.row]
+                cell.configure(SubResource: subResource)
                 cell.selectionStyle = .none
                 return cell
         } else {
@@ -170,7 +173,7 @@ extension ResourcesViewController: UITableViewDataSource {
     }
 }
 
-extension ResourcesViewController: UITableViewDelegate {
+extension SubResourceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 105
     }
