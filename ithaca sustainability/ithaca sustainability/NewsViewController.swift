@@ -165,12 +165,9 @@ class NewsViewController: UIViewController {
     }
     
     @objc func refresh(){
-<<<<<<< Updated upstream
-        //getArticleData()
-=======
+
         getGlobalArticleData()
         getIthacaArticleData()
->>>>>>> Stashed changes
         refreshControl.endRefreshing()
     }
     
@@ -178,11 +175,8 @@ class NewsViewController: UIViewController {
         NetworkManager.getGlobalNewsArticles(completion: { (data,error) in
             var articles: [String:Any] = [:]
             articles = data as! [String : Any]
-<<<<<<< Updated upstream
-            //self.getArticles(articleDictionary: articles)
-=======
+
             self.getGlobalArticles(articleDictionary: articles)
->>>>>>> Stashed changes
         }, finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
