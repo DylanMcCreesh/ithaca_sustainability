@@ -13,22 +13,27 @@ class ResourcesViewController: UIViewController {
     var resourcesButton = UIButton()
     var discussionButton = UIButton()
     var newsButton = UIButton()
+    var navBarBackground = UILabel()
     
     var loadedDiscussionScreen: ViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
         title = "Resources"
         
-        resourcesButton.setBackgroundImage(UIImage(named: "news1"), for: .normal)
+        navBarBackground.backgroundColor = .white
+        navBarBackground.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(navBarBackground)
+        
+        resourcesButton.setBackgroundImage(UIImage(named: "resources2"), for: .normal)
         resourcesButton.backgroundColor = .white
         resourcesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resourcesButton)
         
-        discussionButton.setBackgroundImage(UIImage(named: "news1"), for: .normal)
+        discussionButton.setBackgroundImage(UIImage(named: "home1"), for: .normal)
         discussionButton.backgroundColor = .white
         discussionButton.addTarget(self, action: #selector(discussionButtonPress), for: .touchUpInside)
         discussionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +50,13 @@ class ResourcesViewController: UIViewController {
 
     func setupConstraints() {
 //         Setup the constraints for our views
+        
+        NSLayoutConstraint.activate([
+            navBarBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            navBarBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBarBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navBarBackground.topAnchor.constraint(equalTo: discussionButton.topAnchor, constant: -(view.frame.height * 0.018)),
+        ])
         
         NSLayoutConstraint.activate([
             resourcesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),

@@ -1,0 +1,6 @@
+framework module Pods_ithaca_sustainability {
+  umbrella header "Pods-ithaca sustainability-umbrella.h"
+
+  export *
+  module * { export * }
+}
