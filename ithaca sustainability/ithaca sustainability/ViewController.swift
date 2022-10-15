@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     var newsButton = UIButton()
     var navBarBackground = UILabel()
     
+    var titleLabel = UILabel()
+    var descriptionLabel = UILabel()
+    
     var headerBackground = UILabel()
     var createPostButton = UIButton()
     var searchButton = UIButton()
@@ -26,10 +29,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
-        
-        title = "Discussion"
-        
+        view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)                    
         loadedNewsScreen.loadedDiscussionScreen = self
         loadedResourcesScreen.loadedDiscussionScreen = self
         
@@ -38,6 +38,17 @@ class ViewController: UIViewController {
         headerBackground.backgroundColor = .white
         headerBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerBackground)
+        
+        titleLabel.text = "Discussion"
+        titleLabel.font = .systemFont(ofSize: 28, weight: .bold)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(titleLabel)
+        
+        descriptionLabel.text = "Ithaca Sustainability Q&A"
+        descriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        descriptionLabel.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(descriptionLabel)
         
         createPostButton.setBackgroundImage(UIImage(named:"create_post_button"), for: .normal)
         createPostButton.backgroundColor = .white
@@ -81,24 +92,34 @@ class ViewController: UIViewController {
     func setupConstraints() {
 //         Setup the constraints for our views
         NSLayoutConstraint.activate([
-            headerBackground.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.23)),
+            headerBackground.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.25)),
             headerBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerBackground.topAnchor.constraint(equalTo: view.topAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            createPostButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.20)),
-            createPostButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:10),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -(view.frame.height * 0.02)),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
+            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            createPostButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.22)),
+            createPostButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:15),
             createPostButton.widthAnchor.constraint(equalToConstant: 300),
             createPostButton.heightAnchor.constraint(equalToConstant: 50)
             //createPostButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            searchButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.20)),
+            searchButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.22)),
             //searchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-10),
+            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-15),
             searchButton.widthAnchor.constraint(equalToConstant: 50),
             searchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
