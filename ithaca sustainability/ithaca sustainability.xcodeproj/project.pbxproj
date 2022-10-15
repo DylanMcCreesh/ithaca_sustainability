@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		37B09E226C8D070505B6EE71 /* Pods_ithaca_sustainabilityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6D21B9C5115EA53C3D09B2 /* Pods_ithaca_sustainabilityTests.framework */; };
 		A6EA0CB00D6D3768287FAEF0 /* Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0DCA611CB25F0CCBECF0DF /* Pods_ithaca_sustainability_ithaca_sustainabilityUITests.framework */; };
+		B8407DD328FB1F8600C042FC /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DD228FB1F8600C042FC /* Post.swift */; };
+		B8407DD528FB200100C042FC /* DiscussionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DD428FB200100C042FC /* DiscussionTableViewCell.swift */; };
+		B8407DD728FB23CC00C042FC /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DD628FB23CC00C042FC /* PostViewController.swift */; };
+		B8407DD928FB23EB00C042FC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DD828FB23EB00C042FC /* CommentTableViewCell.swift */; };
+		B8407DDB28FB243A00C042FC /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DDA28FB243A00C042FC /* Comment.swift */; };
+		B8407DDD28FB245100C042FC /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DDC28FB245100C042FC /* CreatePostViewController.swift */; };
+		B8407DDF28FB245E00C042FC /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DDE28FB245E00C042FC /* EditPostViewController.swift */; };
+		B8407DE128FB248300C042FC /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DE028FB248300C042FC /* StartupViewController.swift */; };
 		B8E976DD28FA4EAC005FEAB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */; };
 		B8E976DF28FA4EAC005FEAB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */; };
 		B8E976E128FA4EAC005FEAB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976E028FA4EAC005FEAB6 /* ViewController.swift */; };
@@ -48,6 +56,14 @@
 		456AFF73EBC230B6E502105E /* Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig"; path = "Target Support Files/Pods-ithaca sustainability-ithaca sustainabilityUITests/Pods-ithaca sustainability-ithaca sustainabilityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4EA6F558F23027EFB4128347 /* Pods-ithaca sustainability.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ithaca sustainability.debug.xcconfig"; path = "Target Support Files/Pods-ithaca sustainability/Pods-ithaca sustainability.debug.xcconfig"; sourceTree = "<group>"; };
 		74C0EFB89C99AC363508C2D0 /* Pods_ithaca_sustainability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ithaca_sustainability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8407DD228FB1F8600C042FC /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B8407DD428FB200100C042FC /* DiscussionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionTableViewCell.swift; sourceTree = "<group>"; };
+		B8407DD628FB23CC00C042FC /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		B8407DD828FB23EB00C042FC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		B8407DDA28FB243A00C042FC /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		B8407DDC28FB245100C042FC /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		B8407DDE28FB245E00C042FC /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
+		B8407DE028FB248300C042FC /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		B8E976D928FA4EAC005FEAB6 /* ithaca sustainability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ithaca sustainability.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +174,14 @@
 				FCF2534F28FB047000506C8A /* NetworkManager.swift */,
 				B8E976E728FA4EAE005FEAB6 /* LaunchScreen.storyboard */,
 				B8E976EA28FA4EAE005FEAB6 /* Info.plist */,
+				B8407DD228FB1F8600C042FC /* Post.swift */,
+				B8407DD428FB200100C042FC /* DiscussionTableViewCell.swift */,
+				B8407DD628FB23CC00C042FC /* PostViewController.swift */,
+				B8407DD828FB23EB00C042FC /* CommentTableViewCell.swift */,
+				B8407DDA28FB243A00C042FC /* Comment.swift */,
+				B8407DDC28FB245100C042FC /* CreatePostViewController.swift */,
+				B8407DDE28FB245E00C042FC /* EditPostViewController.swift */,
+				B8407DE028FB248300C042FC /* StartupViewController.swift */,
 			);
 			path = "ithaca sustainability";
 			sourceTree = "<group>";
@@ -418,13 +442,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF2535228FB07D300506C8A /* Article.swift in Sources */,
+				B8407DD528FB200100C042FC /* DiscussionTableViewCell.swift in Sources */,
 				FCF2535028FB047000506C8A /* NetworkManager.swift in Sources */,
 				FCF2534E28FA580A00506C8A /* ResourcesViewController.swift in Sources */,
 				B8E976E128FA4EAC005FEAB6 /* ViewController.swift in Sources */,
 				FCF2535628FB085300506C8A /* ArticleTableViewCell.swift in Sources */,
 				B8E976DD28FA4EAC005FEAB6 /* AppDelegate.swift in Sources */,
+				B8407DD928FB23EB00C042FC /* CommentTableViewCell.swift in Sources */,
+				B8407DE128FB248300C042FC /* StartupViewController.swift in Sources */,
+				B8407DDD28FB245100C042FC /* CreatePostViewController.swift in Sources */,
+				B8407DDB28FB243A00C042FC /* Comment.swift in Sources */,
+				B8407DD328FB1F8600C042FC /* Post.swift in Sources */,
 				B8E976DF28FA4EAC005FEAB6 /* SceneDelegate.swift in Sources */,
 				FCF2534C28FA56F300506C8A /* NewsViewController.swift in Sources */,
+				B8407DDF28FB245E00C042FC /* EditPostViewController.swift in Sources */,
+				B8407DD728FB23CC00C042FC /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
