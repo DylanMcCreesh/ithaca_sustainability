@@ -136,12 +136,12 @@ class CreatePostViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -(view.frame.height * 0.02)),
+            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -(view.frame.height * 0.02)),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
+            descriptionLabel.bottomAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: -view.frame.height*0.01),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
