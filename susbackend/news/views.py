@@ -16,30 +16,27 @@ class db:
 
 @api_view(['GET'])
 def get_ithaca(request):
-    if db.time_since_ithaca > time.time() - 1799:
-        return db.ithaca_articles
+    if db.time_since_ithaca <= time.time() - 1799:
+        try:
+            response = requests.get(ITHACA_URL)
+        except Exception as e:
+            raise e 
 
-    try:
-        response = requests.get(ITHACA_URL)
-    except Exception as e:
-        raise e 
-
-    db.ithaca_articles = response.json()
-    db.time_since_ithaca = time.time()
+        db.ithaca_articles = response.json()
+        db.time_since_ithaca = time.time()
 
     return Response(db.ithaca_articles, status=status.HTTP_200_OK)
 
+
 @api_view(['GET'])
 def get_global(request):
-    if db.time_since_global > time.time() - 1799:
-        return db.global_articles
+    if db.time_since_global <= time.time() - 1799:
+        try:
+            response = requests.get(GLOBAL_URL)
+        except Exception as e:
+            raise e 
 
-    try:
-        response = requests.get(GLOBAL_URL)
-    except Exception as e:
-        raise e 
-
-    db.global_articles = response.json()
-    db.time_since_global = time.time()
+        db.global_articles = response.json()
+        db.time_since_global = time.time()
 
     return Response(db.global_articles, status=status.HTTP_200_OK)
