@@ -9,88 +9,56 @@ import Foundation
 import UIKit
 
 class ResourceTableViewCell: UITableViewCell {
-    /*
-    var titleLabel = UITextView()
-    var dateLabel = UILabel()
-    var publishLabel = UITextView()
-    var articleImage = UIImageView()*/
+    
+    var resourceName = UILabel()
+    var logo = UIImageView()
+    var background = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        /*
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        titleLabel.textColor = .black
-        titleLabel.isEditable = false
-        titleLabel.isSelectable = false
-        titleLabel.isScrollEnabled = true
-        titleLabel.isUserInteractionEnabled = false
-        titleLabel.textContainer.maximumNumberOfLines = 3
-        titleLabel.textContainer.lineBreakMode = .byTruncatingTail
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(titleLabel)
-        
-        publishLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        publishLabel.isEditable = false
-        publishLabel.isSelectable = false
-        publishLabel.isScrollEnabled = true
-        publishLabel.isUserInteractionEnabled = false
-        publishLabel.textContainer.maximumNumberOfLines = 1
-        publishLabel.textContainer.lineBreakMode = .byTruncatingTail
-        publishLabel.translatesAutoresizingMaskIntoConstraints = false
-        publishLabel.textColor = .systemGray
-        contentView.addSubview(publishLabel)
-        
-        dateLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.textColor = .systemGray
-        contentView.addSubview(dateLabel)
 
-        articleImage.contentMode = .scaleAspectFit
-        articleImage.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(articleImage) */
+        background.backgroundColor = .gray
+        background.layer.masksToBounds = true
+        background.layer.cornerRadius = 20
+        background.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(background)
+        
+        resourceName.font = .systemFont(ofSize: 16, weight: .bold)
+        resourceName.textColor = .black
+        resourceName.translatesAutoresizingMaskIntoConstraints = false
+        resourceName.backgroundColor = .clear
+        contentView.addSubview(resourceName)
+
+        logo.contentMode = .scaleAspectFit
+        logo.translatesAutoresizingMaskIntoConstraints = false
+        logo.backgroundColor = .clear
+        contentView.addSubview(logo)
         
         setupConstraints()
     }
 
     func configure(resource: Resource) {
-        /*
-        articleImage.image = article.articleImage
-        titleLabel.text = article.articleTitle
-        publishLabel.text = "From: " + article.publisher!
-        dateLabel.text = article.articleDate*/
+        resourceName.text = resource.resourceCategory
+        logo.image = resource.logo
     }
 
     func setupConstraints() {
-        /*
-        let padding: CGFloat = 15
-        let labelHeight: CGFloat = 25
-
         NSLayoutConstraint.activate([
-            titleLabel.trailingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: -padding),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.heightAnchor.constraint(equalToConstant: 65)
+            background.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            background.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            background.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            background.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
         
         NSLayoutConstraint.activate([
-            publishLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            publishLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            publishLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -5),
-            publishLabel.heightAnchor.constraint(equalToConstant: labelHeight)
+            resourceName.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 5),
+            resourceName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.trailingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: -padding),
-            dateLabel.centerYAnchor.constraint(equalTo: publishLabel.centerYAnchor, constant: 3.5),
-            dateLabel.heightAnchor.constraint(equalToConstant: labelHeight),
+            logo.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -5),
+            logo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
-        
-        NSLayoutConstraint.activate([
-            articleImage.heightAnchor.constraint(equalToConstant: 100),
-            articleImage.widthAnchor.constraint(equalToConstant: 120),
-            articleImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            articleImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
-        ])*/
     }
 
 
