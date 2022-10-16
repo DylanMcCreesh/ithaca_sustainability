@@ -14,6 +14,7 @@ class PostViewController: UIViewController {
     var discussionButton = UIButton()
     var newsButton = UIButton()
     var navBarBackground = UILabel()
+    var addReplyButton = UIButton()
     
     var titleLabel = UILabel()
     var titleText = UITextView()
@@ -76,7 +77,11 @@ class PostViewController: UIViewController {
         repliesLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(repliesLabel)
         
-        
+        addReplyButton.setBackgroundImage(UIImage(named: "add_reply"), for: .normal)
+        addReplyButton.backgroundColor = .clear
+        addReplyButton.addTarget(self, action: #selector(addReplyButtonPress), for: .touchUpInside)
+        addReplyButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(addReplyButton)
         
         navBarBackground.backgroundColor = .white
         navBarBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -156,9 +161,16 @@ class PostViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
             tableView.topAnchor.constraint(equalTo: repliesLabel.bottomAnchor, constant: 5),
-            tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
+            tableView.bottomAnchor.constraint(equalTo: addReplyButton.topAnchor, constant: -2)
         ])
         
+        NSLayoutConstraint.activate([
+            addReplyButton.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -20),
+            addReplyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addReplyButton.widthAnchor.constraint(equalToConstant: 300),
+            addReplyButton.heightAnchor.constraint(equalToConstant: 50)
+        
+        ])
         NSLayoutConstraint.activate([
             navBarBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             navBarBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -207,6 +219,9 @@ class PostViewController: UIViewController {
         self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!)
     }
     
+    @objc func addReplyButtonPress(){
+        
+    }
     
     @objc func refresh(){
         //TODO

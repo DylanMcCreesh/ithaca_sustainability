@@ -19,6 +19,6 @@ class Post {
         postTitle = "default title"
         postDescription = "default description"
         postAuthor = "default author"
-        comments += [Comment()]
+        comments += [Comment(), Comment(), Comment(), Comment()]
     }
 }

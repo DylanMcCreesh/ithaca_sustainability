@@ -22,6 +22,7 @@
 		B8407DE728FB551100C042FC /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DE628FB551100C042FC /* Resource.swift */; };
 		B8407DE928FB576C00C042FC /* SubResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DE828FB576C00C042FC /* SubResourceTableViewCell.swift */; };
 		B8407DEB28FB57C900C042FC /* SubResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DEA28FB57C900C042FC /* SubResource.swift */; };
+		B8407DED28FB948700C042FC /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DEC28FB948700C042FC /* ReplyViewController.swift */; };
 		B8E976DD28FA4EAC005FEAB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */; };
 		B8E976DF28FA4EAC005FEAB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */; };
 		B8E976E128FA4EAC005FEAB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976E028FA4EAC005FEAB6 /* ViewController.swift */; };
@@ -74,6 +75,7 @@
 		B8407DE628FB551100C042FC /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		B8407DE828FB576C00C042FC /* SubResourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubResourceTableViewCell.swift; sourceTree = "<group>"; };
 		B8407DEA28FB57C900C042FC /* SubResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubResource.swift; sourceTree = "<group>"; };
+		B8407DEC28FB948700C042FC /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		B8E976D928FA4EAC005FEAB6 /* ithaca sustainability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ithaca sustainability.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				B8407DE828FB576C00C042FC /* SubResourceTableViewCell.swift */,
 				B8407DE628FB551100C042FC /* Resource.swift */,
 				B8407DEA28FB57C900C042FC /* SubResource.swift */,
+				B8407DEC28FB948700C042FC /* ReplyViewController.swift */,
 			);
 			path = "ithaca sustainability";
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				FCF2534C28FA56F300506C8A /* NewsViewController.swift in Sources */,
 				B8407DDF28FB245E00C042FC /* EditPostViewController.swift in Sources */,
 				B8407DD728FB23CC00C042FC /* PostViewController.swift in Sources */,
+				B8407DED28FB948700C042FC /* ReplyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
