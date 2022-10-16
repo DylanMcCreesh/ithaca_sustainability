@@ -32,6 +32,8 @@ class SubResourceViewController: UIViewController {
         
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
+        subResources = parentResource!.subs
+        
         titleBackground.backgroundColor = .white
         titleBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleBackground)
@@ -87,7 +89,7 @@ class SubResourceViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
-        refreshControl.beginRefreshing()
+        //refreshControl.beginRefreshing()
         
         setupConstraints()
     }
@@ -121,6 +123,13 @@ class SubResourceViewController: UIViewController {
             addButton.widthAnchor.constraint(equalToConstant: 40),
             addButton.heightAnchor.constraint(equalToConstant: 40),
         
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
+            tableView.topAnchor.constraint(equalTo: titleBackground.bottomAnchor, constant: 5),
+            tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
         ])
         
         NSLayoutConstraint.activate([
@@ -183,8 +192,10 @@ extension SubResourceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SubResourceTableViewCell {
                 let subResource = subResources[indexPath.row]
-                cell.configure(SubResource: subResource)
+                cell.configure(subResource: subResource)
                 cell.selectionStyle = .none
+                cell.layer.backgroundColor = UIColor.clear.cgColor
+                cell.backgroundColor = .clear
                 return cell
         } else {
             return UITableViewCell()
@@ -198,9 +209,6 @@ extension SubResourceViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        if let thisURL = posts[indexPath.row].url{
-            UIApplication.shared.open(thisURL)
-        }*/
+       
     }
 }
