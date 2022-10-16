@@ -35,6 +35,7 @@ class SearchViewController: UIViewController {
     var loadedDiscussionScreen: ViewController?
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
@@ -75,7 +76,7 @@ class SearchViewController: UIViewController {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
         
-        searchField.attributedPlaceholder = NSAttributedString(string: "Enter Search Terms", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 236/255, green: 236/255, blue: 236/225, alpha: 1)])
+        searchField.attributedPlaceholder = NSAttributedString(string: "Enter Search Term", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 236/255, green: 236/255, blue: 236/225, alpha: 1)])
         searchField.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
         searchField.translatesAutoresizingMaskIntoConstraints = false
         searchField.setLeftPaddingPoints(10)
@@ -83,11 +84,18 @@ class SearchViewController: UIViewController {
         view.addSubview(searchField)
         
         searchButton.setBackgroundImage(UIImage(named:"search_button2"), for: .normal)
-        searchButton.backgroundColor = .white
+        searchButton.backgroundColor = .clear
         //searchButton.frame.size = CGSize(width: 40.0, height: 20.0)
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.addTarget(self, action: #selector(searchButtonPress), for: .touchUpInside)
         view.addSubview(searchButton)
+        
+        repliesLabel.text = "Replies"
+        repliesLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        repliesLabel.textColor = .white
+        repliesLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(repliesLabel)
+        
         
         
         navBarBackground.backgroundColor = .white
@@ -147,28 +155,33 @@ class SearchViewController: UIViewController {
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
+        NSLayoutConstraint.activate([
+            searchField.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: (view.frame.height * 0.03)),
+            searchField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            searchField.widthAnchor.constraint(equalToConstant: 300),
+            searchField.heightAnchor.constraint(equalToConstant: 50),
+        
+        ])
         
         
         NSLayoutConstraint.activate([
-            createPostButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.22)),
-            createPostButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:15),
-            createPostButton.widthAnchor.constraint(equalToConstant: 300),
-            createPostButton.heightAnchor.constraint(equalToConstant: 50)
-            //createPostButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchButton.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: (view.frame.height * 0.03)),
+            searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            searchButton.widthAnchor.constraint(equalToConstant: 300),
+            searchButton.heightAnchor.constraint(equalToConstant: 50),
         ])
         
         NSLayoutConstraint.activate([
-            searchButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.22)),
-            //searchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-15),
-            searchButton.widthAnchor.constraint(equalToConstant: 50),
-            searchButton.heightAnchor.constraint(equalToConstant: 50)
+            repliesLabel.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: (view.frame.height * 0.03)),
+            repliesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: (view.frame.width) * 0.05),
+            
         ])
+        
         
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
-            tableView.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: 5),
+            tableView.topAnchor.constraint(equalTo: repliesLabel.bottomAnchor, constant: (view.frame.height) * 0.03),
             tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
         ])
         
