@@ -26,12 +26,20 @@ class ResourcesViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
     let reuseIdentifier = "resourceCellReuse"
-    var resources : [Resource] = []
+    var resources : [Resource] = [Resource(), Resource(), Resource()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
+        resources[0].resourceCategory = "Clothing"
+        resources[0].logo = UIImage(named: "resource_clothing")
+        
+        resources[1].resourceCategory = "Household"
+        resources[1].logo = UIImage(named: "resource_household")
+        
+        resources[2].resourceCategory = "Food"
+        resources[2].logo = UIImage(named: "resource_food")
         
         titleBackground.backgroundColor = .white
         titleBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +88,7 @@ class ResourcesViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
-        refreshControl.beginRefreshing()
+        //refreshControl.beginRefreshing()
         
         setupConstraints()
     }
@@ -102,6 +110,13 @@ class ResourcesViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
+            tableView.topAnchor.constraint(equalTo: titleBackground.bottomAnchor, constant: 5),
+            tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
         ])
         
         NSLayoutConstraint.activate([
@@ -162,6 +177,8 @@ extension ResourcesViewController: UITableViewDataSource {
                 let resource = resources[indexPath.row]
                 cell.configure(resource: resource)
                 cell.selectionStyle = .none
+                cell.layer.backgroundColor = UIColor.clear.cgColor
+                cell.backgroundColor = .clear
                 return cell
         } else {
             return UITableViewCell()
