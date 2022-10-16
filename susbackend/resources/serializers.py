@@ -8,11 +8,19 @@ Serializers allow large, complex datasets to be rendered into
 native Python datatypes, which can be easily converted into JSON, XML,
 or other types we might need.
 """
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = ["name", "website", "category_id"]
 
+class BrandSubSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = ["name", "website"]
 
 class CategorySerializer(serializers.ModelSerializer):
-    brands = serializers.StringRelatedField(many=True, allow_null=True)
     id = serializers.IntegerField()
+    brands = BrandSubSerializer(many=True)
 
     class Meta:
         model = Category
@@ -21,16 +29,12 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class CategorySubSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
-
     class Meta:
         model = Category
         fields = ["id", "title"]
+        
+    def create(self, validated_data):
+        return Category.objects.create(**validated_data)
 
-    # def create(self, validated_data):
-    #     return Category.objects.create(**validated_data)
 
 
-class BrandSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Brand
-        fields = "__all__"
