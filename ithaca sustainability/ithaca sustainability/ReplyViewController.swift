@@ -127,7 +127,7 @@ class ReplyViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -(view.frame.height * 0.02)),
+            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -(view.frame.height * 0.02)),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
