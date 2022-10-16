@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
-//  practiceTableView
+//  AddSubResourceViewController.swift
+//  ithaca sustainability
 //
-//  Created by Dylan McCreesh on 10/14/22.
+//  Created by Annesh Ghosh Dastidar on 10/15/22.
 //
 
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
+class AddSubResourceViewController: UIViewController {
     
     var resourcesButton = UIButton()
     var discussionButton = UIButton()
@@ -18,26 +18,25 @@ class ViewController: UIViewController {
     var titleLabel = UILabel()
     var descriptionLabel = UILabel()
     
-    var headerBackground = UILabel()
-    var createPostButton = UIButton()
-    var searchButton = UIButton()
+    var postTitleLabel = UILabel()
+    var postTitleText = UITextField()
     
-    let refreshControl = UIRefreshControl()
-    var tableView = UITableView()
-    let reuseIdentifier = "discussionCellReuse"
-    var posts : [Post] = [Post(), Post()]
+    var postDescriptionLabel = UILabel()
+    var postDescriptionText = UITextView()
+    
+    var publishButton = UIButton()
+    
+    var headerBackground = UILabel()
+    
                 
-    var loadedNewsScreen = NewsViewController()
-    var loadedResourcesScreen = ResourcesViewController()
+    var loadedDiscussionScreen: ViewController?
+    
+    var parentResource: Resource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
-        
-        
-        loadedNewsScreen.loadedDiscussionScreen = self
-        loadedResourcesScreen.loadedDiscussionScreen = self
         
         self.navigationController?.setNeedsUpdateOfHomeIndicatorAutoHidden()
         
@@ -45,7 +44,7 @@ class ViewController: UIViewController {
         headerBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerBackground)
         
-        titleLabel.text = "Discussion"
+        titleLabel.text = "Suggest Brand"
         titleLabel.font = .systemFont(ofSize: 28, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
@@ -56,20 +55,36 @@ class ViewController: UIViewController {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
         
-        createPostButton.setBackgroundImage(UIImage(named:"create_post_button"), for: .normal)
-        createPostButton.backgroundColor = .white
-        //createPostButton.frame.size = CGSize(width: 40.0, height: 20.0)
-        createPostButton.translatesAutoresizingMaskIntoConstraints = false
-        createPostButton.addTarget(self, action: #selector(createPostButtonPress), for: .touchUpInside)
-        view.addSubview(createPostButton)
+        postTitleLabel.text = "Brand Name"
+        postTitleLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        postTitleLabel.textColor = .white
+        postTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(postTitleLabel)
         
-        searchButton.setBackgroundImage(UIImage(named:"search_button"), for: .normal)
-        searchButton.backgroundColor = .white
-        //searchButton.frame.size = CGSize(width: 40.0, height: 20.0)
-        searchButton.translatesAutoresizingMaskIntoConstraints = false
-        searchButton.addTarget(self, action: #selector(searchButtonPress), for: .touchUpInside)
-        view.addSubview(searchButton)
+        //postTitleText.placeholder = "Enter Post Title"
+        postTitleText.attributedPlaceholder = NSAttributedString(string: "Enter Brand Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 236/255, green: 236/255, blue: 236/225, alpha: 1)])
+        postTitleText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
+        postTitleText.translatesAutoresizingMaskIntoConstraints = false
+        postTitleText.setLeftPaddingPoints(10)
+        postTitleText.setRightPaddingPoints(10)
+        view.addSubview(postTitleText)
         
+        postDescriptionLabel.text = "Website"
+        postDescriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        postDescriptionLabel.textColor = .white
+        postDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(postDescriptionLabel)
+        
+        postDescriptionText.translatesAutoresizingMaskIntoConstraints = false
+        postDescriptionText.font = .systemFont(ofSize: 18, weight: .regular)
+        postDescriptionText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
+        view.addSubview(postDescriptionText)
+        
+        publishButton.setBackgroundImage(UIImage(named:"publish"), for: .normal)
+        publishButton.backgroundColor = .clear
+        publishButton.translatesAutoresizingMaskIntoConstraints = false
+        publishButton.addTarget(self, action: #selector(publishButtonPress), for: .touchUpInside)
+        view.addSubview(publishButton)
         
         navBarBackground.backgroundColor = .white
         navBarBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -83,6 +98,7 @@ class ViewController: UIViewController {
         
         discussionButton.setBackgroundImage(UIImage(named: "home2"), for: .normal)
         discussionButton.backgroundColor = .white
+        discussionButton.addTarget(self, action: #selector(discussionButtonPress), for: .touchUpInside)
         discussionButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(discussionButton)
         
@@ -92,26 +108,13 @@ class ViewController: UIViewController {
         newsButton.addTarget(self, action: #selector(newsButtonPress), for: .touchUpInside)
         view.addSubview(newsButton)
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-        tableView.register(DiscussionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        view.addSubview(tableView)
-        refreshControl.attributedTitle = NSAttributedString(string: "")
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tableView.addSubview(refreshControl)
-        
-        //refreshControl.beginRefreshing()
-        
         setupConstraints()
     }
 
     func setupConstraints() {
 //         Setup the constraints for our views
         NSLayoutConstraint.activate([
-            headerBackground.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.25)),
+            headerBackground.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.16)),
             headerBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerBackground.topAnchor.constraint(equalTo: view.topAnchor),
@@ -128,26 +131,36 @@ class ViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            createPostButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.22)),
-            createPostButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:15),
-            createPostButton.widthAnchor.constraint(equalToConstant: 300),
-            createPostButton.heightAnchor.constraint(equalToConstant: 50)
-            //createPostButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            postTitleLabel.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: view.frame.height * 0.025),
+            postTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
         ])
         
         NSLayoutConstraint.activate([
-            searchButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant:(view.frame.height * 0.22)),
-            //searchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-15),
-            searchButton.widthAnchor.constraint(equalToConstant: 50),
-            searchButton.heightAnchor.constraint(equalToConstant: 50)
+            postTitleText.topAnchor.constraint(equalTo: postTitleLabel.bottomAnchor, constant: view.frame.height * 0.01),
+            postTitleText.leadingAnchor.constraint(equalTo: postTitleLabel.leadingAnchor),
+            postTitleText.heightAnchor.constraint(equalToConstant: 40),
+            postTitleText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+
         ])
         
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
-            tableView.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: 5),
-            tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
+            postDescriptionLabel.topAnchor.constraint(equalTo: postTitleText.bottomAnchor, constant: view.frame.height * 0.025),
+            postDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+        ])
+        
+        NSLayoutConstraint.activate([
+            postDescriptionText.topAnchor.constraint(equalTo: postDescriptionLabel.bottomAnchor, constant: view.frame.height * 0.01),
+            postDescriptionText.leadingAnchor.constraint(equalTo: postTitleLabel.leadingAnchor),
+            postDescriptionText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            postDescriptionText.heightAnchor.constraint(equalToConstant: 400),
+        ])
+        
+        NSLayoutConstraint.activate([
+            publishButton.topAnchor.constraint(equalTo: postDescriptionText.bottomAnchor, constant: view.frame.height * 0.025),
+            publishButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            publishButton.widthAnchor.constraint(equalToConstant: 300),
+            publishButton.heightAnchor.constraint(equalToConstant: 50),
+        
         ])
         
         NSLayoutConstraint.activate([
@@ -187,20 +200,18 @@ class ViewController: UIViewController {
     }
     
     @objc func newsButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedNewsScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedNewsScreen)
     }
     
     @objc func resourcesButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedResourcesScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedResourcesScreen)
     }
     
-    @objc func createPostButtonPress(){
-        let createPostScreen = CreatePostViewController()
-        createPostScreen.loadedDiscussionScreen = self
-        self.view.window?.rootViewController = UINavigationController(rootViewController: createPostScreen)
+    @objc func discussionButtonPress(){
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!)
     }
     
-    @objc func searchButtonPress(){
+    @objc func publishButtonPress(){
         //TODO
     }
     
@@ -209,36 +220,4 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? DiscussionTableViewCell {
-                let post = posts[indexPath.row]
-                cell.configure(post: post)
-                cell.selectionStyle = .none
-                cell.layer.backgroundColor = UIColor.clear.cgColor
-                cell.backgroundColor = .clear
-                return cell
-        } else {
-            return UITableViewCell()
-        }
-    }
-}
-
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 105
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row]
-        let postScreen = PostViewController()
-        postScreen.parentPost = post
-        postScreen.loadedDiscussionScreen = self
-        self.view.window?.rootViewController = UINavigationController(rootViewController: postScreen)
-    }
-}

@@ -23,6 +23,7 @@
 		B8407DE928FB576C00C042FC /* SubResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DE828FB576C00C042FC /* SubResourceTableViewCell.swift */; };
 		B8407DEB28FB57C900C042FC /* SubResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DEA28FB57C900C042FC /* SubResource.swift */; };
 		B8407DED28FB948700C042FC /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DEC28FB948700C042FC /* ReplyViewController.swift */; };
+		B8407DEF28FBA32400C042FC /* AddSubResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8407DEE28FBA32400C042FC /* AddSubResourceViewController.swift */; };
 		B8E976DD28FA4EAC005FEAB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */; };
 		B8E976DF28FA4EAC005FEAB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */; };
 		B8E976E128FA4EAC005FEAB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E976E028FA4EAC005FEAB6 /* ViewController.swift */; };
@@ -76,6 +77,7 @@
 		B8407DE828FB576C00C042FC /* SubResourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubResourceTableViewCell.swift; sourceTree = "<group>"; };
 		B8407DEA28FB57C900C042FC /* SubResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubResource.swift; sourceTree = "<group>"; };
 		B8407DEC28FB948700C042FC /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		B8407DEE28FBA32400C042FC /* AddSubResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubResourceViewController.swift; sourceTree = "<group>"; };
 		B8E976D928FA4EAC005FEAB6 /* ithaca sustainability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ithaca sustainability.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E976DC28FA4EAC005FEAB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E976DE28FA4EAC005FEAB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				B8407DE628FB551100C042FC /* Resource.swift */,
 				B8407DEA28FB57C900C042FC /* SubResource.swift */,
 				B8407DEC28FB948700C042FC /* ReplyViewController.swift */,
+				B8407DEE28FBA32400C042FC /* AddSubResourceViewController.swift */,
 			);
 			path = "ithaca sustainability";
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8407DEF28FBA32400C042FC /* AddSubResourceViewController.swift in Sources */,
 				B8407DEB28FB57C900C042FC /* SubResource.swift in Sources */,
 				FCF2535228FB07D300506C8A /* Article.swift in Sources */,
 				B8407DD528FB200100C042FC /* DiscussionTableViewCell.swift in Sources */,

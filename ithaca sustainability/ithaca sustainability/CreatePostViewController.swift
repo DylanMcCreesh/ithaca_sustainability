@@ -202,7 +202,7 @@ class CreatePostViewController: UIViewController {
     }
     
     @objc func resourcesButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedNewsScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedResourcesScreen)
     }
     
     @objc func discussionButtonPress(){

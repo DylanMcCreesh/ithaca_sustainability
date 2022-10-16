@@ -53,6 +53,7 @@ class SubResourceViewController: UIViewController {
         
         addButton.setBackgroundImage(UIImage(named: "add"), for: .normal)
         addButton.backgroundColor = .clear
+        addButton.addTarget(self, action: #selector(addButtonPress), for: .touchUpInside)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addButton)
         
@@ -175,6 +176,13 @@ class SubResourceViewController: UIViewController {
     
     @objc func resourcesButtonPress(){
         self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedResourcesScreen)
+    }
+    
+    @objc func addButtonPress() {
+        let screen = AddSubResourceViewController()
+        screen.loadedDiscussionScreen = self.loadedDiscussionScreen
+        screen.parentResource = parentResource!
+        self.view.window?.rootViewController = UINavigationController(rootViewController: screen)
     }
     
     @objc func refresh() {
