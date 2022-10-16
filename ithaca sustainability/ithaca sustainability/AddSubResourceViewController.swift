@@ -18,11 +18,11 @@ class AddSubResourceViewController: UIViewController {
     var titleLabel = UILabel()
     var descriptionLabel = UILabel()
     
-    var postTitleLabel = UILabel()
-    var postTitleText = UITextField()
+    var brandLabel = UILabel()
+    var brandText = UITextField()
     
-    var postDescriptionLabel = UILabel()
-    var postDescriptionText = UITextView()
+    var urlLabel = UILabel()
+    var urlText = UITextView()
     
     var publishButton = UIButton()
     
@@ -49,36 +49,36 @@ class AddSubResourceViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
         
-        descriptionLabel.text = "Ithaca Sustainability Q&A"
+        descriptionLabel.text = "Submit Your Suggestion"
         descriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
         descriptionLabel.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
         
-        postTitleLabel.text = "Brand Name"
-        postTitleLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        postTitleLabel.textColor = .white
-        postTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(postTitleLabel)
+        brandLabel.text = "Brand Name"
+        brandLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        brandLabel.textColor = .white
+        brandLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(brandLabel)
         
         //postTitleText.placeholder = "Enter Post Title"
-        postTitleText.attributedPlaceholder = NSAttributedString(string: "Enter Brand Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 236/255, green: 236/255, blue: 236/225, alpha: 1)])
-        postTitleText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
-        postTitleText.translatesAutoresizingMaskIntoConstraints = false
-        postTitleText.setLeftPaddingPoints(10)
-        postTitleText.setRightPaddingPoints(10)
-        view.addSubview(postTitleText)
+        brandText.attributedPlaceholder = NSAttributedString(string: "Enter Brand Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 236/255, green: 236/255, blue: 236/225, alpha: 1)])
+        brandText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
+        brandText.translatesAutoresizingMaskIntoConstraints = false
+        brandText.setLeftPaddingPoints(10)
+        brandText.setRightPaddingPoints(10)
+        view.addSubview(brandText)
         
-        postDescriptionLabel.text = "Website"
-        postDescriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        postDescriptionLabel.textColor = .white
-        postDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(postDescriptionLabel)
+        urlLabel.text = "Website"
+        urlLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        urlLabel.textColor = .white
+        urlLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(urlLabel)
         
-        postDescriptionText.translatesAutoresizingMaskIntoConstraints = false
-        postDescriptionText.font = .systemFont(ofSize: 18, weight: .regular)
-        postDescriptionText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
-        view.addSubview(postDescriptionText)
+        urlText.translatesAutoresizingMaskIntoConstraints = false
+        urlText.font = .systemFont(ofSize: 18, weight: .regular)
+        urlText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
+        view.addSubview(urlText)
         
         publishButton.setBackgroundImage(UIImage(named:"publish"), for: .normal)
         publishButton.backgroundColor = .clear
@@ -131,32 +131,32 @@ class AddSubResourceViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            postTitleLabel.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: view.frame.height * 0.025),
-            postTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            brandLabel.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: view.frame.height * 0.025),
+            brandLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
         ])
         
         NSLayoutConstraint.activate([
-            postTitleText.topAnchor.constraint(equalTo: postTitleLabel.bottomAnchor, constant: view.frame.height * 0.01),
-            postTitleText.leadingAnchor.constraint(equalTo: postTitleLabel.leadingAnchor),
-            postTitleText.heightAnchor.constraint(equalToConstant: 40),
-            postTitleText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+            brandText.topAnchor.constraint(equalTo: brandLabel.bottomAnchor, constant: view.frame.height * 0.01),
+            brandText.leadingAnchor.constraint(equalTo: brandLabel.leadingAnchor),
+            brandText.heightAnchor.constraint(equalToConstant: 40),
+            brandText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
 
         ])
         
         NSLayoutConstraint.activate([
-            postDescriptionLabel.topAnchor.constraint(equalTo: postTitleText.bottomAnchor, constant: view.frame.height * 0.025),
-            postDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            urlLabel.topAnchor.constraint(equalTo: brandText.bottomAnchor, constant: view.frame.height * 0.025),
+            urlLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
         ])
         
         NSLayoutConstraint.activate([
-            postDescriptionText.topAnchor.constraint(equalTo: postDescriptionLabel.bottomAnchor, constant: view.frame.height * 0.01),
-            postDescriptionText.leadingAnchor.constraint(equalTo: postTitleLabel.leadingAnchor),
-            postDescriptionText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            postDescriptionText.heightAnchor.constraint(equalToConstant: 400),
+            urlText.topAnchor.constraint(equalTo: urlLabel.bottomAnchor, constant: view.frame.height * 0.01),
+            urlText.leadingAnchor.constraint(equalTo: brandLabel.leadingAnchor),
+            urlText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            urlText.heightAnchor.constraint(equalToConstant: 400),
         ])
         
         NSLayoutConstraint.activate([
-            publishButton.topAnchor.constraint(equalTo: postDescriptionText.bottomAnchor, constant: view.frame.height * 0.025),
+            publishButton.topAnchor.constraint(equalTo: urlText.bottomAnchor, constant: view.frame.height * 0.025),
             publishButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             publishButton.widthAnchor.constraint(equalToConstant: 300),
             publishButton.heightAnchor.constraint(equalToConstant: 50),
@@ -191,8 +191,6 @@ class AddSubResourceViewController: UIViewController {
             newsButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05625),
         ])
         
-        
-        
     }
     
     override var prefersHomeIndicatorAutoHidden: Bool {
@@ -212,12 +210,12 @@ class AddSubResourceViewController: UIViewController {
     }
     
     @objc func publishButtonPress(){
-        //TODO
+        if let text = brandText.text{
+            var myDict: [String: String] = ["title" : text]
+            NetworkManager.postResourceSuggestion(params: myDict)
+        }
     }
     
-    @objc func refresh(){
-        //TODO
-    }
 }
 
 
