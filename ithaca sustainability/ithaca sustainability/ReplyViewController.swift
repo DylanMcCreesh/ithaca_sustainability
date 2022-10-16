@@ -68,7 +68,7 @@ class ReplyViewController: UIViewController {
         replyText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
         view.addSubview(replyText)
         
-        replyButton.setBackgroundImage(UIImage(named:"reply_button"), for: .normal)
+        replyButton.setBackgroundImage(UIImage(named:"add_reply"), for: .normal)
         replyButton.backgroundColor = .clear
         replyButton.translatesAutoresizingMaskIntoConstraints = false
         replyButton.addTarget(self, action: #selector(replyButtonPress), for: .touchUpInside)
@@ -132,7 +132,7 @@ class ReplyViewController: UIViewController {
         
         
         NSLayoutConstraint.activate([
-            replyButton.topAnchor.constraint(equalTo: postDescriptionText.bottomAnchor, constant: view.frame.height * 0.025),
+            replyButton.topAnchor.constraint(equalTo: replyText.bottomAnchor, constant: view.frame.height * 0.025),
             replyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             replyButton.widthAnchor.constraint(equalToConstant: 300),
             replyButton.heightAnchor.constraint(equalToConstant: 50),
