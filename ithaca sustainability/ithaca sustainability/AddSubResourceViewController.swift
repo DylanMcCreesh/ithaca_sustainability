@@ -211,11 +211,22 @@ class AddSubResourceViewController: UIViewController {
     
     @objc func publishButtonPress(){
         if let text = brandText.text{
-            var myDict: [String: String] = ["title" : text]
-            NetworkManager.postResourceSuggestion(params: myDict)
+            if text != ""{
+                let myDict = ["title" : text]
+                print(1)
+                NetworkManager.postResourceSuggestion(params: myDict)
+                showAlert()
+                print(2)
+            }
         }
     }
     
+    func showAlert(){
+        let alert = UIAlertController(title: "Thanks", message: "We appreciate your submission!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Return", style: .default) { _ in                 self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedResourcesScreen)
+            return })
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 
