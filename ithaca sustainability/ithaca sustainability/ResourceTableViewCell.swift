@@ -23,7 +23,7 @@ class ResourceTableViewCell: UITableViewCell {
         background.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(background)
         
-        resourceName.font = .systemFont(ofSize: 16, weight: .bold)
+        resourceName.font = .systemFont(ofSize: 25, weight: .bold)
         resourceName.textColor = .black
         resourceName.translatesAutoresizingMaskIntoConstraints = false
         resourceName.backgroundColor = .clear
@@ -51,13 +51,15 @@ class ResourceTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            resourceName.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 5),
+            resourceName.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 15),
             resourceName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            logo.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -5),
-            logo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            logo.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -15),
+            logo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            logo.widthAnchor.constraint(equalToConstant: 45),
+            logo.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
 
