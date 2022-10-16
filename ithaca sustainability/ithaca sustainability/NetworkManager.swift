@@ -35,7 +35,8 @@ class NetworkManager {
     typealias APIResponse = ((_ response: Any?, _ error: Error?) -> Void)
     
     static func getIthacaNewsArticles(completion: @escaping APIResponse, finished: @escaping ()->()){
-        let endpoint = "https://newsapi.org/v2/everything?q=sustainability%20ithaca&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
+        //let endpoint = "https://newsapi.org/v2/everything?q=sustainability%20ithaca&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
+        let endpoint = "http://34.123.70.93/news/ithaca"
         AF.request(endpoint, method: .get).validate().responseData { response in
             //process response
             switch(response.result) {
@@ -54,7 +55,8 @@ class NetworkManager {
     }
     
     static func getGlobalNewsArticles(completion: @escaping APIResponse, finished: @escaping ()->()){
-        let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
+        //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
+        let endpoint = "http://34.123.70.93/news/global"
         AF.request(endpoint, method: .get).validate().responseData { response in
             //process response
             switch(response.result) {
