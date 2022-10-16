@@ -132,7 +132,7 @@ class ReplyViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height * 0.002),
+            descriptionLabel.bottomAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: -view.frame.height*0.01),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
