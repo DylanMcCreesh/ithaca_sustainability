@@ -302,7 +302,8 @@ class NewsViewController: UIViewController {
                 self.ithacaArticles = self.sortArticleByTime(array: self.ithacaArticles)
                 self.globalArticles = self.sortArticleByTime(array: self.globalArticles)
                 self.allArticles = self.ithacaArticles + self.globalArticles
-                self.articles =  self.sortArticleByTime(array: self.allArticles)
+                self.allArticles =  self.sortArticleByTime(array: self.allArticles)
+                self.articles = self.allArticles
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -366,7 +367,8 @@ class NewsViewController: UIViewController {
                 self.ithacaArticles = self.sortArticleByTime(array: self.ithacaArticles)
                 self.globalArticles = self.sortArticleByTime(array: self.globalArticles)
                 self.allArticles = self.ithacaArticles + self.globalArticles
-                self.articles =  self.sortArticleByTime(array: self.allArticles)
+                self.allArticles =  self.sortArticleByTime(array: self.allArticles)
+                self.articles = self.allArticles
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }

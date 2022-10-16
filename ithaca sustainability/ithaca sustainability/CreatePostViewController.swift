@@ -21,6 +21,9 @@ class CreatePostViewController: UIViewController {
     var postTitleLabel = UILabel()
     var postTitleText = UITextField()
     
+    var postAuthorLabel = UILabel()
+    var postAuthorText = UITextField()
+    
     var postDescriptionLabel = UILabel()
     var postDescriptionText = UITextView()
     
@@ -66,6 +69,20 @@ class CreatePostViewController: UIViewController {
         postTitleText.setLeftPaddingPoints(10)
         postTitleText.setRightPaddingPoints(10)
         view.addSubview(postTitleText)
+        
+        postAuthorLabel.text = "Name"
+        postAuthorLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        postAuthorLabel.textColor = .white
+        postAuthorLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(postAuthorLabel)
+        
+        //postTitleText.placeholder = "Enter Post Title"
+        postAuthorText.attributedPlaceholder = NSAttributedString(string: "Enter Your Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 236/255, green: 236/255, blue: 236/225, alpha: 1)])
+        postAuthorText.backgroundColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 0.25)
+        postAuthorText.translatesAutoresizingMaskIntoConstraints = false
+        postAuthorText.setLeftPaddingPoints(10)
+        postAuthorText.setRightPaddingPoints(10)
+        view.addSubview(postAuthorText)
         
         postDescriptionLabel.text = "Description"
         postDescriptionLabel.font = .systemFont(ofSize: 18, weight: .bold)
@@ -142,7 +159,20 @@ class CreatePostViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            postDescriptionLabel.topAnchor.constraint(equalTo: postTitleText.bottomAnchor, constant: view.frame.height * 0.025),
+            postAuthorLabel.topAnchor.constraint(equalTo: postTitleText.bottomAnchor, constant: view.frame.height * 0.025),
+            postAuthorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+        ])
+        
+        NSLayoutConstraint.activate([
+            postAuthorText.topAnchor.constraint(equalTo: postAuthorLabel.bottomAnchor, constant: view.frame.height * 0.01),
+            postAuthorText.leadingAnchor.constraint(equalTo: postAuthorLabel.leadingAnchor),
+            postAuthorText.heightAnchor.constraint(equalToConstant: 40),
+            postAuthorText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+
+        ])
+        
+        NSLayoutConstraint.activate([
+            postDescriptionLabel.topAnchor.constraint(equalTo: postAuthorText.bottomAnchor, constant: view.frame.height * 0.025),
             postDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
         ])
         
@@ -150,11 +180,11 @@ class CreatePostViewController: UIViewController {
             postDescriptionText.topAnchor.constraint(equalTo: postDescriptionLabel.bottomAnchor, constant: view.frame.height * 0.01),
             postDescriptionText.leadingAnchor.constraint(equalTo: postTitleLabel.leadingAnchor),
             postDescriptionText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            postDescriptionText.heightAnchor.constraint(equalToConstant: 400),
+            postDescriptionText.bottomAnchor.constraint(equalTo: publishButton.topAnchor, constant: -10)
         ])
         
         NSLayoutConstraint.activate([
-            publishButton.topAnchor.constraint(equalTo: postDescriptionText.bottomAnchor, constant: view.frame.height * 0.025),
+            publishButton.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -10),
             publishButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             publishButton.widthAnchor.constraint(equalToConstant: 300),
             publishButton.heightAnchor.constraint(equalToConstant: 50),
