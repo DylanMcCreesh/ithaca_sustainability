@@ -82,7 +82,7 @@ class NetworkManager {
     
     static func postQuestion(params: [String:String]){
         //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
-        let endpoint = "http://34.123.70.93/discussion/post"
+        let endpoint = "http://34.123.70.93/discussion/post/"
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
     }
     
@@ -90,6 +90,26 @@ class NetworkManager {
         //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
         let endpoint = "http://34.123.70.93/discussion/post/" + String(id) + "/comment/"
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
+    }
+    
+    static func getDiscussionData(completion: @escaping APIResponse, finished: @escaping ()->()){
+        //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
+        let endpoint = "http://34.123.70.93/discussion/"
+        AF.request(endpoint, method: .get).validate().responseData { response in
+            //process response
+            switch(response.result) {
+            case .success(let data):
+                //let jsonDecoder = JSONDecoder()
+                if let userResponse = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+                    completion(userResponse, nil)
+                    finished()
+                } else {
+                    print("Failed")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 
 }
