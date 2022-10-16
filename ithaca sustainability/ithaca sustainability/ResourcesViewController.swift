@@ -34,6 +34,9 @@ class ResourcesViewController: UIViewController {
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         resources[0].resourceCategory = "Clothing"
         resources[0].logo = UIImage(named: "resource_clothing")
+        var list0 = [SubResource(), SubResource()]
+        list0[0].subResourceName = ""
+        resources[0].subs = list0
         
         resources[1].resourceCategory = "Household"
         resources[1].logo = UIImage(named: "resource_household")
