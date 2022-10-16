@@ -74,7 +74,7 @@ class NetworkManager {
         }
     }
     
-    static func postResourceSuggestion(completion: @escaping APIResponse, finished: @escaping ()->()){
+    static func postResourceSuggestion(params: [String], completion: @escaping APIResponse, finished: @escaping ()->()){
         //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
         let endpoint = "http://34.123.70.93/news/global"
         AF.request(endpoint, method: .get).validate().responseData { response in
