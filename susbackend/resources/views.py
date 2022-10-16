@@ -20,6 +20,8 @@ def create_category(request):
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # [GET] category by id
+
+
 @api_view(['GET'])
 def get_category_by_id(request, category_id):
     try:
