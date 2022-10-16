@@ -34,15 +34,27 @@ class ResourcesViewController: UIViewController {
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         resources[0].resourceCategory = "Clothing"
         resources[0].logo = UIImage(named: "resource_clothing")
-        var list0 = [SubResource(), SubResource()]
-        list0[0].subResourceName = ""
+        var list0 = [SubResource(), SubResource(), SubResource()]
+        list0[0].subResourceName = "Everlane"
+        list0[1].subResourceName = "Girlfriend Collective"
+        list0[2].subResourceName = "BRAND"
         resources[0].subs = list0
         
         resources[1].resourceCategory = "Household"
         resources[1].logo = UIImage(named: "resource_household")
+        var list1 = [SubResource(), SubResource(), SubResource()]
+        list1[0].subResourceName = "Made Trade"
+        list1[1].subResourceName = "Etsy"
+        list1[2].subResourceName = "Parachute"
+        resources[1].subs = list1
         
         resources[2].resourceCategory = "Food"
         resources[2].logo = UIImage(named: "resource_food")
+        var list2 = [SubResource(), SubResource(), SubResource()]
+        list2[0].subResourceName = "Nature's Path"
+        list2[1].subResourceName = "Vital Farms"
+        list2[2].subResourceName = "GoMacro"
+        resources[2].subs = list2
         
         titleBackground.backgroundColor = .white
         titleBackground.translatesAutoresizingMaskIntoConstraints = false
