@@ -34,7 +34,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
+        posts[0].postAuthor = "Dylan McCreesh"
+        posts[0].postDescription = "I'm not from Tompkins county/the Ithaca area. Where I grew up, you couldn't recycle glass. I was wondering whether glass is an acceptable recyclable here in Ithaca. Thank you!"
+        posts[0].postTitle = "Recycling Glass in Ithaca"
+        var list0 = [Comment(), Comment()]
+        list0[0].commentAuthor = "Marya Kim"
+        list0[0].commentBody = "Great question! Yes, glass is an accpetable recyclable here in Ithaca."
+        list0[1].commentAuthor = "Emily Penna"
+        list0[1].commentBody = "Yeah, you can! Funnily enough, I had the same question when I moved here."
+        posts[0].comments = list0
         
+        posts[1].postAuthor = "Annesh Ghosh Dastidar"
+        posts[1].postDescription = "I'm not sure where/how I should be disposing of my battery waste."
+        posts[1].postTitle = "Proper battery disposal in Ithaca?"
+        var list1 = [Comment()]
+        list1[0].commentAuthor = "Emily Penna"
+        list1[0].commentBody = "I was wondering about this as well! Does anyone know?"
+        posts[1].comments = list1
         
         loadedNewsScreen.loadedDiscussionScreen = self
         loadedResourcesScreen.loadedDiscussionScreen = self
