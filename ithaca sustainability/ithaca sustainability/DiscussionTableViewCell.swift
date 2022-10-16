@@ -32,7 +32,7 @@ class DiscussionTableViewCell: UITableViewCell {
         titleLabel.isSelectable = false
         titleLabel.isScrollEnabled = true
         titleLabel.isUserInteractionEnabled = false
-        titleLabel.textContainer.maximumNumberOfLines = 3
+        titleLabel.textContainer.maximumNumberOfLines = 2
         titleLabel.textContainer.lineBreakMode = .byTruncatingTail
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)
@@ -63,36 +63,34 @@ class DiscussionTableViewCell: UITableViewCell {
     }
 
     func setupConstraints() {
-        /*
         let padding: CGFloat = 15
         let labelHeight: CGFloat = 25
 
         NSLayoutConstraint.activate([
-            titleLabel.trailingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: -padding),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            background.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            background.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            background.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            background.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
+        ])
+        
+        NSLayoutConstraint.activate([
+            titleLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -padding),
+            titleLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: padding),
+            titleLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 5),
             titleLabel.heightAnchor.constraint(equalToConstant: 65)
         ])
         
         NSLayoutConstraint.activate([
-            publishLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            publishLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            publishLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -5),
-            publishLabel.heightAnchor.constraint(equalToConstant: labelHeight)
+            numRepliesLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: padding + 3),
+            numRepliesLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -3),
+            numRepliesLabel.heightAnchor.constraint(equalToConstant: labelHeight)
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.trailingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: -padding),
-            dateLabel.centerYAnchor.constraint(equalTo: publishLabel.centerYAnchor, constant: 3.5),
-            dateLabel.heightAnchor.constraint(equalToConstant: labelHeight),
+            authorLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -(padding + 3)),
+            authorLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -3),
+            authorLabel.heightAnchor.constraint(equalToConstant: labelHeight)
         ])
-        
-        NSLayoutConstraint.activate([
-            articleImage.heightAnchor.constraint(equalToConstant: 100),
-            articleImage.widthAnchor.constraint(equalToConstant: 120),
-            articleImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            articleImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
-        ])*/
     }
 
 

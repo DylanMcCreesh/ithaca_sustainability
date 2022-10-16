@@ -30,6 +30,8 @@ class PostViewController: UIViewController {
     var tableView = UITableView()
     let reuseIdentifier = "commentCellReuse"
     var comments : [Comment] = []
+    
+    var parentPost = Post()
                 
     var loadedDiscussionScreen: ViewController?
     
@@ -38,6 +40,7 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
+        comments = parentPost.comments
         
         self.navigationController?.setNeedsUpdateOfHomeIndicatorAutoHidden()
         
@@ -45,7 +48,7 @@ class PostViewController: UIViewController {
         headerBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerBackground)
         
-        titleText.text = "Nearby Battery Disposal Location"
+        titleText.text = parentPost.postTitle
         titleText.isEditable = false
         titleText.font = .systemFont(ofSize: 20, weight: .bold)
         titleText.textColor = .black
@@ -53,14 +56,14 @@ class PostViewController: UIViewController {
         view.addSubview(titleText)
         
         
-        authorLabel.text = "BillyBobJoe"
+        authorLabel.text = parentPost.postAuthor
         authorLabel.font = .systemFont(ofSize: 16, weight: .bold)
         authorLabel.textColor = UIColor(red: 113/255, green: 113/255, blue: 113/225, alpha: 1)
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(authorLabel)
         
         
-        descriptionText.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+        descriptionText.text = parentPost.postDescription
         descriptionText.isEditable = false
         descriptionText.font = .systemFont(ofSize: 16, weight: .regular)
         descriptionText.textColor = UIColor(red: 113/255, green: 113/255, blue: 113/225, alpha: 1)
@@ -109,7 +112,7 @@ class PostViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
-        refreshControl.beginRefreshing()
+        //refreshControl.beginRefreshing()
         
         setupConstraints()
     }
@@ -149,6 +152,12 @@ class PostViewController: UIViewController {
             repliesLabel.leadingAnchor.constraint(equalTo: titleText.leadingAnchor, constant: 4.5),
         ])
         
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
+            tableView.topAnchor.constraint(equalTo: repliesLabel.bottomAnchor, constant: 5),
+            tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
+        ])
         
         NSLayoutConstraint.activate([
             navBarBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -215,6 +224,8 @@ extension PostViewController: UITableViewDataSource {
                 let comment = comments[indexPath.row]
                 cell.configure(comment: comment)
                 cell.selectionStyle = .none
+                cell.layer.backgroundColor = UIColor.clear.cgColor
+                cell.backgroundColor = .clear
                 return cell
         } else {
             return UITableViewCell()
@@ -228,10 +239,7 @@ extension PostViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        if let thisURL = posts[indexPath.row].url{
-            UIApplication.shared.open(thisURL)
-        }*/
+
     }
 }
 

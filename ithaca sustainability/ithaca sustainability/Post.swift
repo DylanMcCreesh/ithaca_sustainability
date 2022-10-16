@@ -15,5 +15,10 @@ class Post {
     var postAuthor: String?
     var comments: [Comment] = []
     
-    init(){}
+    init(){
+        postTitle = "default title"
+        postDescription = "default description"
+        postAuthor = "default author"
+        comments += [Comment()]
+    }
 }

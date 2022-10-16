@@ -9,88 +9,69 @@ import Foundation
 import UIKit
 
 class CommentTableViewCell: UITableViewCell {
-    /*
-    var titleLabel = UITextView()
-    var dateLabel = UILabel()
-    var publishLabel = UITextView()
-    var articleImage = UIImageView()*/
+    
+    var background = UILabel()
+    var authorLabel = UILabel()
+    var bodyLabel = UITextView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        /*
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        titleLabel.textColor = .black
-        titleLabel.isEditable = false
-        titleLabel.isSelectable = false
-        titleLabel.isScrollEnabled = true
-        titleLabel.isUserInteractionEnabled = false
-        titleLabel.textContainer.maximumNumberOfLines = 3
-        titleLabel.textContainer.lineBreakMode = .byTruncatingTail
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(titleLabel)
+        background.backgroundColor = .white
+        background.layer.masksToBounds = true
+        background.layer.cornerRadius = 20
+        background.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(background)
         
-        publishLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        publishLabel.isEditable = false
-        publishLabel.isSelectable = false
-        publishLabel.isScrollEnabled = true
-        publishLabel.isUserInteractionEnabled = false
-        publishLabel.textContainer.maximumNumberOfLines = 1
-        publishLabel.textContainer.lineBreakMode = .byTruncatingTail
-        publishLabel.translatesAutoresizingMaskIntoConstraints = false
-        publishLabel.textColor = .systemGray
-        contentView.addSubview(publishLabel)
+        bodyLabel.backgroundColor = .clear
+        bodyLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        bodyLabel.textColor = .black
+        bodyLabel.isEditable = false
+        bodyLabel.isSelectable = false
+        bodyLabel.isScrollEnabled = true
+        bodyLabel.isUserInteractionEnabled = false
+        bodyLabel.textContainer.maximumNumberOfLines = 2
+        bodyLabel.textContainer.lineBreakMode = .byTruncatingTail
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(bodyLabel)
         
-        dateLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.textColor = .systemGray
-        contentView.addSubview(dateLabel)
+        authorLabel.backgroundColor = .clear
+        authorLabel.font = .systemFont(ofSize: 12, weight: .bold)
+        authorLabel.translatesAutoresizingMaskIntoConstraints = false
+        authorLabel.textColor = .systemGray
+        contentView.addSubview(authorLabel)
 
-        articleImage.contentMode = .scaleAspectFit
-        articleImage.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(articleImage) */
-        
         setupConstraints()
     }
 
     func configure(comment: Comment) {
-        /*
-        articleImage.image = article.articleImage
-        titleLabel.text = article.articleTitle
-        publishLabel.text = "From: " + article.publisher!
-        dateLabel.text = article.articleDate*/
+        bodyLabel.text = comment.commentBody
+        authorLabel.text = comment.commentAuthor
     }
 
     func setupConstraints() {
-        /*
         let padding: CGFloat = 15
         let labelHeight: CGFloat = 25
 
         NSLayoutConstraint.activate([
-            titleLabel.trailingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: -padding),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.heightAnchor.constraint(equalToConstant: 65)
+            background.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            background.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            background.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            background.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
         
         NSLayoutConstraint.activate([
-            publishLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            publishLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            publishLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -5),
-            publishLabel.heightAnchor.constraint(equalToConstant: labelHeight)
+            bodyLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -padding),
+            bodyLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: padding),
+            bodyLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 5),
+            bodyLabel.heightAnchor.constraint(equalToConstant: 65)
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.trailingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: -padding),
-            dateLabel.centerYAnchor.constraint(equalTo: publishLabel.centerYAnchor, constant: 3.5),
-            dateLabel.heightAnchor.constraint(equalToConstant: labelHeight),
+            authorLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: padding + 3),
+            authorLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -3),
+            authorLabel.heightAnchor.constraint(equalToConstant: labelHeight)
         ])
         
-        NSLayoutConstraint.activate([
-            articleImage.heightAnchor.constraint(equalToConstant: 100),
-            articleImage.widthAnchor.constraint(equalToConstant: 120),
-            articleImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            articleImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
-        ])*/
     }
 
 

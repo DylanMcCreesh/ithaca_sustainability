@@ -29,9 +29,7 @@ class CreatePostViewController: UIViewController {
     var headerBackground = UILabel()
     
                 
-    var loadedNewsScreen = NewsViewController()
-    var loadedDiscussionScreen = ViewController()
-    var loadedResourcesScreen = ResourcesViewController()
+    var loadedDiscussionScreen: ViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,15 +198,15 @@ class CreatePostViewController: UIViewController {
     }
     
     @objc func newsButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedNewsScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedNewsScreen)
     }
     
     @objc func resourcesButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedResourcesScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedNewsScreen)
     }
     
     @objc func discussionButtonPress(){
-        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen)
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!)
     }
     
     @objc func publishButtonPress(){

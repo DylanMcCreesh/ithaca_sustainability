@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
     let reuseIdentifier = "discussionCellReuse"
-    var posts : [Post] = []
+    var posts : [Post] = [Post(), Post()]
                 
     var loadedNewsScreen = NewsViewController()
     var loadedResourcesScreen = ResourcesViewController()
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
-        refreshControl.beginRefreshing()
+        //refreshControl.beginRefreshing()
         
         setupConstraints()
     }
@@ -138,6 +138,13 @@ class ViewController: UIViewController {
             searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-15),
             searchButton.widthAnchor.constraint(equalToConstant: 50),
             searchButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
+            tableView.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: 5),
+            tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
         ])
         
         NSLayoutConstraint.activate([
@@ -185,7 +192,9 @@ class ViewController: UIViewController {
     }
     
     @objc func createPostButtonPress(){
-        //TODO
+        let createPostScreen = CreatePostViewController()
+        createPostScreen.loadedDiscussionScreen = self
+        self.view.window?.rootViewController = UINavigationController(rootViewController: createPostScreen)
     }
     
     @objc func searchButtonPress(){
@@ -208,6 +217,8 @@ extension ViewController: UITableViewDataSource {
                 let post = posts[indexPath.row]
                 cell.configure(post: post)
                 cell.selectionStyle = .none
+                cell.layer.backgroundColor = UIColor.clear.cgColor
+                cell.backgroundColor = .clear
                 return cell
         } else {
             return UITableViewCell()
@@ -221,9 +232,10 @@ extension ViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        if let thisURL = posts[indexPath.row].url{
-            UIApplication.shared.open(thisURL)
-        }*/
+        let post = posts[indexPath.row]
+        let postScreen = PostViewController()
+        postScreen.parentPost = post
+        postScreen.loadedDiscussionScreen = self
+        self.view.window?.rootViewController = UINavigationController(rootViewController: postScreen)
     }
 }

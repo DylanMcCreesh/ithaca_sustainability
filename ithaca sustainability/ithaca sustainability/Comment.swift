@@ -12,5 +12,8 @@ class Comment {
     var commentBody: String?
     var commentAuthor: String?
     
-    init(){}
+    init(){
+        commentBody = "default body"
+        commentAuthor = "default author"
+    }
 }
