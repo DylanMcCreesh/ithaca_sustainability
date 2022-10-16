@@ -36,6 +36,8 @@ class ReplyViewController: UIViewController {
     
     var headerBackground = UILabel()
     
+    var parentPost: Post?
+    
     var loadedDiscussionScreen: ViewController?
 
     override func viewDidLoad() {

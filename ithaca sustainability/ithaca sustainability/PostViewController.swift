@@ -222,6 +222,7 @@ class PostViewController: UIViewController {
     @objc func addReplyButtonPress(){
         let screen = ReplyViewController()
         screen.loadedDiscussionScreen = self.loadedDiscussionScreen
+        screen.parentPost = self.parentPost
         self.view.window?.rootViewController = UINavigationController(rootViewController: screen)
     }
     
