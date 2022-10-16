@@ -1,20 +1,44 @@
+from pickle import GLOBAL
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 import requests
+import time
 
-from django.http import JsonResponse
+from news.constants import ITHACA_URL, GLOBAL_URL
 
-from news.constants import NEWS_API_URL
+SECONDS = 86399
+
+class db: 
+    ithaca_articles = None
+    global_articles = None
+    time_since_ithaca = 0
+    time_since_global = 0
+
+@api_view(['GET'])
+def get_ithaca(request):
+    if db.time_since_ithaca <= time.time() - SECONDS:
+        try:
+            response = requests.get(ITHACA_URL)
+        except Exception as e:
+            raise e 
+
+        db.ithaca_articles = response.json()
+        db.time_since_ithaca = time.time()
+
+    return Response(db.ithaca_articles, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
-def get_api(request):
-    try:
-        response = requests.get(NEWS_API_URL)
-    except Exception as e:
-        raise e 
+def get_global(request):
+    if db.time_since_global <= time.time() - SECONDS:
+        try:
+            response = requests.get(GLOBAL_URL)
+        except Exception as e:
+            raise e 
 
-    return Response(response.json(), status=status.HTTP_200_OK)
-    #return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
+        db.global_articles = response.json()
+        db.time_since_global = time.time()
+
+    return Response(db.global_articles, status=status.HTTP_200_OK)

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'discussion.apps.DiscussionConfig',
     'news.apps.NewsConfig',
+    'resources.apps.ResourcesConfig',
     'rest_framework'
 ]
 
