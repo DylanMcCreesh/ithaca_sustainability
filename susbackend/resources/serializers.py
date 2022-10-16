@@ -21,13 +21,12 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class CategorySubSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
-
     class Meta:
         model = Category
         fields = ["id", "title"]
-
-    # def create(self, validated_data):
-    #     return Category.objects.create(**validated_data)
+        
+    def create(self, validated_data):
+        return Category.objects.create(**validated_data)
 
 
 class BrandSerializer(serializers.ModelSerializer):
