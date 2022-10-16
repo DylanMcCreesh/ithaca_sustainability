@@ -186,7 +186,7 @@ class SubResourceViewController: UIViewController {
     }
     
     @objc func refresh() {
-        //TODO
+        refreshControl.endRefreshing()
     }
 
 }

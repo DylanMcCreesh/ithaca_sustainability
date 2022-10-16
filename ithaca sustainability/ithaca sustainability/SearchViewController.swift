@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
     var searchField = UITextField()
     var searchButton = UIButton()
     
-    var repliesLabel = UILabel()
+    var postsLabel = UILabel()
     
     var headerBackground = UILabel()
     var createPostButton = UIButton()
@@ -73,11 +73,11 @@ class SearchViewController: UIViewController {
         searchButton.addTarget(self, action: #selector(searchButtonPress), for: .touchUpInside)
         view.addSubview(searchButton)
         
-        repliesLabel.text = "Replies"
-        repliesLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        repliesLabel.textColor = .white
-        repliesLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(repliesLabel)
+        postsLabel.text = "Posts"
+        postsLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        postsLabel.textColor = .white
+        postsLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(postsLabel)
         
         
         
@@ -155,8 +155,8 @@ class SearchViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            repliesLabel.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: (view.frame.height * 0.03)),
-            repliesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: (view.frame.width) * 0.05),
+            postsLabel.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: (view.frame.height * 0.03)),
+            postsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: (view.frame.width) * 0.05),
             
         ])
         
@@ -164,7 +164,7 @@ class SearchViewController: UIViewController {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
-            tableView.topAnchor.constraint(equalTo: repliesLabel.bottomAnchor, constant: (view.frame.height) * 0.03),
+            tableView.topAnchor.constraint(equalTo: postsLabel.bottomAnchor, constant: (view.frame.height) * 0.03),
             tableView.bottomAnchor.constraint(equalTo: navBarBackground.topAnchor, constant: -2)
         ])
         
