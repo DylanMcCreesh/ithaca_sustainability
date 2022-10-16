@@ -248,13 +248,39 @@ class NewsViewController: UIViewController {
         refreshControl.endRefreshing()
     }
     
-    func sortArticleByTime (array: [Article]){
-        var holder: [Article] = []
+    func sortArticleByTime (array: [Article]) -> [Article]{
+        var holder: [Int: Double] = [:]
+        var mapping: [Int: Article] = [:]
+        var index: [Int] = []
         var i = 0
         for a in array{
-            holder[i] = a
+            index.append(i)
+            mapping[i] = a
+            holder[i] = getUnixFromDate(dateStr: a.articleDate!)
             i += 1
         }
+        var swapHappen = true
+        while swapHappen{
+            swapHappen = false
+            for i in 0...(index.count-1){
+                if i < index.count-1{
+                    let time1 = holder[index[i]]
+                    let time2 = holder[index[i+1]]
+                    if time1! < time2!{
+                        swapHappen = true
+                        let temp = index[i]
+                        index[i] = index[i+1]
+                        index[i+1] = temp                    }
+                }
+                
+            }
+        }
+        var res: [Article] = []
+        for i in index{
+            res.append(mapping[i]!)
+        }
+        return res
+        
     }
     
     func getUnixFromDate(dateStr: String) -> Double{
@@ -273,8 +299,10 @@ class NewsViewController: UIViewController {
             self.getGlobalArticles(articleDictionary: articles)
         }, finished: {
             DispatchQueue.main.async {
+                self.ithacaArticles = self.sortArticleByTime(array: self.ithacaArticles)
+                self.globalArticles = self.sortArticleByTime(array: self.globalArticles)
                 self.allArticles = self.ithacaArticles + self.globalArticles
-                self.articles = self.allArticles
+                self.articles =  self.sortArticleByTime(array: self.allArticles)
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -335,8 +363,10 @@ class NewsViewController: UIViewController {
             self.getIthacaArticles(articleDictionary: articles)
         }, finished: {
             DispatchQueue.main.async {
+                self.ithacaArticles = self.sortArticleByTime(array: self.ithacaArticles)
+                self.globalArticles = self.sortArticleByTime(array: self.globalArticles)
                 self.allArticles = self.ithacaArticles + self.globalArticles
-                self.articles = self.allArticles
+                self.articles =  self.sortArticleByTime(array: self.allArticles)
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
