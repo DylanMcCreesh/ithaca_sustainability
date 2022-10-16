@@ -76,7 +76,7 @@ class NetworkManager {
     
     static func postResourceSuggestion(params: [String:String]){
         //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
-        let endpoint = "http://34.123.70.93/news/global"
+        let endpoint = "http://34.123.70.93/resources/category/"
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
     }
 
