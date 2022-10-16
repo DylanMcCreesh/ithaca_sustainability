@@ -40,6 +40,10 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
         posts = loadedDiscussionScreen!.posts
         
         self.navigationController?.setNeedsUpdateOfHomeIndicatorAutoHidden()
@@ -266,7 +270,7 @@ extension SearchViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row]
+        let post = displayedPosts[indexPath.row]
         let postScreen = PostViewController()
         postScreen.parentPost = post
         postScreen.loadedDiscussionScreen = self.loadedDiscussionScreen!

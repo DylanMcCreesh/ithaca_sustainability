@@ -34,6 +34,8 @@ class EditPostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
         
         self.navigationController?.setNeedsUpdateOfHomeIndicatorAutoHidden()
         
