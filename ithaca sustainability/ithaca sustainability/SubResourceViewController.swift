@@ -36,7 +36,7 @@ class SubResourceViewController: UIViewController {
         titleBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleBackground)
         
-        titleLabel.text = "Sustainable Clothing"
+        titleLabel.text = "Sustainable Brands"
         titleLabel.font = .systemFont(ofSize: 28, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)

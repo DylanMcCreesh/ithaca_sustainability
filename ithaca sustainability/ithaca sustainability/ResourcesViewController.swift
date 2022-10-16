@@ -26,7 +26,7 @@ class ResourcesViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
     let reuseIdentifier = "resourceCellReuse"
-    var resources : [Resource] = [Resource(), Resource(), Resource()]
+    var resources : [Resource] = [Resource(), Resource(), Resource(), Resource(), Resource()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +55,22 @@ class ResourcesViewController: UIViewController {
         list2[1].subResourceName = "Vital Farms"
         list2[2].subResourceName = "GoMacro"
         resources[2].subs = list2
+        
+        resources[3].resourceCategory = "Footwear"
+        resources[3].logo = UIImage(named: "resource_footwear")
+        var list3 = [SubResource(), SubResource(), SubResource()]
+        list3[0].subResourceName = "ABLE"
+        list3[1].subResourceName = "Allbirds"
+        list3[2].subResourceName = "Nisolo"
+        resources[3].subs = list3
+        
+        resources[4].resourceCategory = "Bags"
+        resources[4].logo = UIImage(named: "resource_bags")
+        var list4 = [SubResource(), SubResource(), SubResource()]
+        list4[0].subResourceName = "Cuyana"
+        list4[1].subResourceName = "MASHU"
+        list4[2].subResourceName = "Advene"
+        resources[4].subs = list4
         
         titleBackground.backgroundColor = .white
         titleBackground.translatesAutoresizingMaskIntoConstraints = false
