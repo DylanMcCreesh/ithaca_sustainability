@@ -3,20 +3,8 @@ from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 
-
-from discussion.serializers import CommentSerializer, PostSerializer, PostSubSerializer, UserSerializer, UserSubSerializer, CommentSubSerializer
-from .models import Comment, Post, User
-
-"""
-Create a user.
-"""
-@api_view(['POST'])
-def create_user(request):
-    serializer = UserSubSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
-    return JsonResponse(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+from discussion.serializers import CommentSerializer, PostSerializer, PostSubSerializer, CommentSubSerializer
+from .models import Comment, Post
 
 
 """
@@ -27,7 +15,6 @@ def create_post(request):
     serializer = PostSubSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
     return JsonResponse(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
@@ -55,14 +42,20 @@ def get_post_by_id(request, post_id):
 
 """
 Create comment on a post.
-Given post id
 """
+@api_view(['POST'])
 def create_comment_on_post(request, post_id):
+    try:
+        queryset = Post.objects.get(id=post_id)
+    except Post.DoesNotExist:
+        return JsonResponse({"error":"does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
     serializer = CommentSubSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
     return JsonResponse(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+
 
 """
 STRETCH GOAL: Create comment on another comment.
