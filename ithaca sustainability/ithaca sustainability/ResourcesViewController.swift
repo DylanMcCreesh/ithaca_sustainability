@@ -82,7 +82,7 @@ class ResourcesViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        tableView.register(DiscussionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ResourceTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -192,9 +192,10 @@ extension ResourcesViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        if let thisURL = posts[indexPath.row].url{
-            UIApplication.shared.open(thisURL)
-        }*/
+        let resource = resources[indexPath.row]
+        let screen = SubResourceViewController()
+        screen.parentResource = resource
+        screen.loadedDiscussionScreen = self.loadedDiscussionScreen
+        self.view.window?.rootViewController = UINavigationController(rootViewController: screen)
     }
 }

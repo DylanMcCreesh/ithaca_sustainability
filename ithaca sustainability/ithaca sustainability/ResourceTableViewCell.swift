@@ -17,7 +17,7 @@ class ResourceTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        background.backgroundColor = .gray
+        background.backgroundColor = .white
         background.layer.masksToBounds = true
         background.layer.cornerRadius = 20
         background.translatesAutoresizingMaskIntoConstraints = false

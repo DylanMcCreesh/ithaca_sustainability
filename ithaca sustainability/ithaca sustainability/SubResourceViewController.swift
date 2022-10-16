@@ -22,6 +22,9 @@ class SubResourceViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     var tableView = UITableView()
     let reuseIdentifier = "subResourceCellReuse"
+    
+    var parentResource: Resource?
+    
     var subResources : [SubResource] = []
 
     override func viewDidLoad() {
@@ -57,6 +60,7 @@ class SubResourceViewController: UIViewController {
         
         resourcesButton.setBackgroundImage(UIImage(named: "resources2"), for: .normal)
         resourcesButton.backgroundColor = .white
+        resourcesButton.addTarget(self, action: #selector(resourcesButtonPress), for: .touchUpInside)
         resourcesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resourcesButton)
         
@@ -77,7 +81,7 @@ class SubResourceViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        tableView.register(DiscussionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(SubResourceTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -158,6 +162,10 @@ class SubResourceViewController: UIViewController {
     
     @objc func newsButtonPress(){
         self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedNewsScreen)
+    }
+    
+    @objc func resourcesButtonPress(){
+        self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedResourcesScreen)
     }
     
     @objc func refresh() {
