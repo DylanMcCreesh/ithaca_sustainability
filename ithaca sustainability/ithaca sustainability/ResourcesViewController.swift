@@ -82,6 +82,7 @@ class ResourcesViewController: UIViewController {
         view.addSubview(titleBackground)
         
         titleLabel.text = "Resources"
+        titleLabel.textColor = .black
         titleLabel.font = .systemFont(ofSize: 28, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)

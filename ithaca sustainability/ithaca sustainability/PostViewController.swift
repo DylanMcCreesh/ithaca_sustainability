@@ -50,6 +50,7 @@ class PostViewController: UIViewController {
         view.addSubview(headerBackground)
         
         titleText.text = parentPost.postTitle
+        titleText.textColor = .white
         titleText.isEditable = false
         titleText.font = .systemFont(ofSize: 20, weight: .bold)
         titleText.textColor = .black
@@ -65,6 +66,7 @@ class PostViewController: UIViewController {
         
         
         descriptionText.text = parentPost.postDescription
+        descriptionText.textColor = .white
         descriptionText.isEditable = false
         descriptionText.font = .systemFont(ofSize: 16, weight: .regular)
         descriptionText.textColor = UIColor(red: 113/255, green: 113/255, blue: 113/225, alpha: 1)

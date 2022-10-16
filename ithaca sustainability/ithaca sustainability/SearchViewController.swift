@@ -49,6 +49,7 @@ class SearchViewController: UIViewController {
         view.addSubview(headerBackground)
         
         titleLabel.text = "Search"
+        titleLabel.textColor = .black
         titleLabel.font = .systemFont(ofSize: 28, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
