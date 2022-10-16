@@ -8,6 +8,8 @@ import time
 
 from news.constants import ITHACA_URL, GLOBAL_URL
 
+SECONDS = 86399
+
 class db: 
     ithaca_articles = None
     global_articles = None
@@ -16,7 +18,7 @@ class db:
 
 @api_view(['GET'])
 def get_ithaca(request):
-    if db.time_since_ithaca <= time.time() - 1799:
+    if db.time_since_ithaca <= time.time() - SECONDS:
         try:
             response = requests.get(ITHACA_URL)
         except Exception as e:
@@ -30,7 +32,7 @@ def get_ithaca(request):
 
 @api_view(['GET'])
 def get_global(request):
-    if db.time_since_global <= time.time() - 1799:
+    if db.time_since_global <= time.time() - SECONDS:
         try:
             response = requests.get(GLOBAL_URL)
         except Exception as e:
