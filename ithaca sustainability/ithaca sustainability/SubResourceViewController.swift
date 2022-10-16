@@ -45,6 +45,7 @@ class SubResourceViewController: UIViewController {
         
         descriptionText.text = "A sustainable brand not on this list? Help grow our resources here: "
         descriptionText.isEditable = false
+        descriptionText.backgroundColor = .clear
         descriptionText.font = .systemFont(ofSize: 16, weight: .bold)
         descriptionText.textColor = UIColor(red: 118/255, green: 158/255, blue: 125/225, alpha: 1)
         descriptionText.translatesAutoresizingMaskIntoConstraints = false
