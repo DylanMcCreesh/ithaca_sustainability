@@ -11,6 +11,7 @@ import UIKit
 
 class Resource {
     var resourceCategory: String?
+    var id = 1
     var subs: [SubResource] = []
     var logo: UIImage?
     

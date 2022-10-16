@@ -219,12 +219,34 @@ class ReplyViewController: UIViewController {
     }
     
     @objc func replyButtonPress(){
-        //TODO
+        if let author = replyAuthorText.text, let text = replyText.text {
+            if (author.count > 50 || text.count > 100 || author.count == 0 || text.count == 0 ){
+                showAlert()
+            }
+            else{
+                let myDict = ["post_id": parentPost!.id, "author": author, "text": text] as! [String:Any]
+                NetworkManager.postReply(params: myDict, id: parentPost!.id)
+                sendBack()
+            }
+        }
+        else{
+            showAlert()
+        }
     }
     
-    @objc func refresh(){
-        //TODO
+    func sendBack(){
+        let alert = UIAlertController(title: "Thanks", message: "Your reply has been added!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+            self.loadedDiscussionScreen!.refresh()
+            self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!)
+            return })
+        present(alert, animated: true, completion: nil)
     }
     
-
+    func showAlert(){
+        let alert = UIAlertController(title: "Try Again!", message: "You must provide a title (<=100 characters) and a name (<=50 characters)!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+            return })
+        present(alert, animated: true, completion: nil)
+    }
 }

@@ -240,11 +240,36 @@ class CreatePostViewController: UIViewController {
     }
     
     @objc func publishButtonPress(){
-        //TODO
+        if let author = postAuthorText.text, let desc = postDescriptionText.text, let title = postTitleText.text {
+            if (author.count > 50 || desc.count > 250 || title.count > 100 || author.count == 0 || desc.count == 0 || title.count == 0 ){
+                showAlert()
+            }
+            else{
+                let myDict = ["author": author, "title": title, "text" : desc]
+                NetworkManager.postQuestion(params: myDict)
+                sendBack()
+            }
+        }
+        
+        else{
+            showAlert()
+        }
     }
     
-    @objc func refresh(){
-        //TODO
+    func sendBack(){
+        let alert = UIAlertController(title: "Thanks", message: "Your post has been added!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+            self.loadedDiscussionScreen!.refresh()
+            self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!)
+            return })
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert(){
+        let alert = UIAlertController(title: "Try Again!", message: "You must provide a title (<=100 characters), a name (<=50 characters) and a description (<=250 characters)!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+            return })
+        present(alert, animated: true, completion: nil)
     }
 }
 

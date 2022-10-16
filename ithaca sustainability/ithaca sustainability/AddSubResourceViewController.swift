@@ -210,20 +210,31 @@ class AddSubResourceViewController: UIViewController {
     }
     
     @objc func publishButtonPress(){
-        if let text = brandText.text{
+        if let text = brandText.text, let urlLink = urlText.text{
             if text != ""{
-                let myDict = ["title" : text]
-                print(1)
+                let myDict = ["name" : text, "website": urlLink, "category_id": parentResource!.id] as [String:Any]
                 NetworkManager.postResourceSuggestion(params: myDict)
-                showAlert()
-                print(2)
+                sendBack()
             }
+            else{
+                showAlert()
+            }
+        }
+        else{
+            showAlert()
         }
     }
     
-    func showAlert(){
+    func sendBack(){
         let alert = UIAlertController(title: "Thanks", message: "We appreciate your submission!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Return", style: .default) { _ in                 self.view.window?.rootViewController = UINavigationController(rootViewController: self.loadedDiscussionScreen!.loadedResourcesScreen)
+            return })
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert(){
+        let alert = UIAlertController(title: "Try Again!", message: "You must provide a valid link, and a brand name!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
             return })
         present(alert, animated: true, completion: nil)
     }

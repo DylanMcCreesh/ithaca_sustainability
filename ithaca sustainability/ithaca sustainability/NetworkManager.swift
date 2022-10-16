@@ -74,22 +74,30 @@ class NetworkManager {
         }
     }
     
-    static func postResourceSuggestion(params: [String:String]){
+    static func postResourceSuggestion(params: [String:Any]){
         //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
-        let endpoint = "http://34.123.70.93/resources/category/"
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
+        let endpoint = "http://34.123.70.93/resources/brand/"
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON{ response in
+            print(response)
+        }
     }
     
     static func postQuestion(params: [String:String]){
         //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
         let endpoint = "http://34.123.70.93/discussion/post/"
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON{ response in
+            print(response)
+        }
     }
     
-    static func postReply(params: [String:String], id: Int){
+    static func postReply(params: [String:Any], id: Int){
         //let endpoint = "https://newsapi.org/v2/everything?q=sustainability&apiKey=06871c6b394f4c9198bfc4629a14b9ff"
         let endpoint = "http://34.123.70.93/discussion/post/" + String(id) + "/comment/"
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON{ response in
+            print(response)
+        }
+    
+        
     }
     
     static func getDiscussionData(completion: @escaping APIResponse, finished: @escaping ()->()){

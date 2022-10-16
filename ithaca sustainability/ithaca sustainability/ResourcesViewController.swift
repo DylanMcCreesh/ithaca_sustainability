@@ -33,6 +33,7 @@ class ResourcesViewController: UIViewController {
         
         view.backgroundColor = UIColor(red: 219/255, green: 227/255, blue: 217/255, alpha: 1)
         resources[0].resourceCategory = "Clothing"
+        resources[0].id = 1
         resources[0].logo = UIImage(named: "resource_clothing")
         var list0 = [SubResource(), SubResource(), SubResource()]
         list0[0].subResourceName = "Everlane"
@@ -41,6 +42,7 @@ class ResourcesViewController: UIViewController {
         resources[0].subs = list0
         
         resources[1].resourceCategory = "Household"
+        resources[1].id = 2
         resources[1].logo = UIImage(named: "resource_household")
         var list1 = [SubResource(), SubResource(), SubResource()]
         list1[0].subResourceName = "Made Trade"
@@ -50,6 +52,7 @@ class ResourcesViewController: UIViewController {
         
         resources[2].resourceCategory = "Food"
         resources[2].logo = UIImage(named: "resource_food")
+        resources[2].id = 3
         var list2 = [SubResource(), SubResource(), SubResource()]
         list2[0].subResourceName = "Nature's Path"
         list2[1].subResourceName = "Vital Farms"
@@ -58,6 +61,7 @@ class ResourcesViewController: UIViewController {
         
         resources[3].resourceCategory = "Footwear"
         resources[3].logo = UIImage(named: "resource_footwear")
+        resources[3].id = 4
         var list3 = [SubResource(), SubResource(), SubResource()]
         list3[0].subResourceName = "ABLE"
         list3[1].subResourceName = "Allbirds"
@@ -66,6 +70,7 @@ class ResourcesViewController: UIViewController {
         
         resources[4].resourceCategory = "Bags"
         resources[4].logo = UIImage(named: "resource_bags")
+        resources[4].id = 5
         var list4 = [SubResource(), SubResource(), SubResource()]
         list4[0].subResourceName = "Cuyana"
         list4[1].subResourceName = "MASHU"
