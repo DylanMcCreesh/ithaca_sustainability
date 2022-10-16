@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 
 
-from discussion.serializers import CommentSerializer, PostSerializer, PostSubSerializer, UserSerializer, UserSubSerializer
+from discussion.serializers import CommentSerializer, PostSerializer, PostSubSerializer, UserSerializer, UserSubSerializer, CommentSubSerializer
 from .models import Comment, Post, User
 
 """
@@ -58,7 +58,7 @@ Create comment on a post.
 Given post id
 """
 def create_comment_on_post(request, post_id):
-    serializer = CommentSerializer(data=request.data)
+    serializer = CommentSubSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
