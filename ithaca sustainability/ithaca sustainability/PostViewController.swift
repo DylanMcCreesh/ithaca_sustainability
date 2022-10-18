@@ -231,7 +231,7 @@ class PostViewController: UIViewController {
     }
     
     @objc func refresh(){
-        //TODO
+        refreshControl.endRefreshing()
     }
 }
 
